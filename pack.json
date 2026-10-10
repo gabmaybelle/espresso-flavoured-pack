@@ -1,6 +1,6 @@
 {
 	"name": "Espresso Flavoured",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"summary": "A shot of espresso for your survival world: less stress, less grind, more building.",
 	"minecraft": "26.3",
 	"fabricLoader": "0.19.5",
