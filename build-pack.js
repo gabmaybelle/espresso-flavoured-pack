@@ -27,6 +27,7 @@ async function newestVersion(id, loader = 'fabric') {
 
 (async () => {
 	const chosen = new Map();   // project id -> { project, version, reason }
+	const deps = new Map();     // project id -> ids of the projects it requires
 	const queue = pack.mods.map(slug => ({ id: slug, reason: 'listed' }));
 	while (queue.length) {
 		const { id, reason } = queue.shift();
@@ -43,6 +44,7 @@ async function newestVersion(id, loader = 'fabric') {
 			continue;
 		}
 		chosen.set(project.id, { project, version, reason });
+		deps.set(project.id, version.dependencies.filter(d => d.dependency_type === 'required' && d.project_id).map(d => d.project_id));
 		for (const dep of version.dependencies) {
 			if (dep.dependency_type === 'required' && dep.project_id && !chosen.has(dep.project_id)) {
 				queue.push({ id: dep.project_id, reason: `needed by ${project.title}` });
@@ -51,6 +53,19 @@ async function newestVersion(id, loader = 'fabric') {
 	}
 
 	const side = s => (s === 'unsupported' ? 'unsupported' : s === 'required' ? 'required' : 'optional');
+	// A server needs everything its server-side mods depend on, even libraries that call
+	// themselves server-optional on Modrinth (Fabric API, Placeholder API, config libraries...).
+	// pack.serverRequired lists extra ones, such as what the overrides (our own jar) need.
+	const serverNeeds = new Set();
+	const bySlug = new Map([...chosen.values()].map(c => [c.project.slug, c.project.id]));
+	const visit = id => {
+		// Even a "client-only" library comes along if a server mod depends on it (Rechiseled needs Fusion).
+		if (serverNeeds.has(id) || !chosen.has(id)) return;
+		serverNeeds.add(id);
+		(deps.get(id) || []).forEach(visit);
+	};
+	for (const { project } of chosen.values()) if (project.server_side === 'required') visit(project.id);
+	for (const slug of pack.serverRequired || []) visit(bySlug.get(slug));
 	const files = [];
 	for (const { project, version } of chosen.values()) {
 		const file = version.files.find(f => f.primary) || version.files[0];
@@ -62,7 +77,7 @@ async function newestVersion(id, loader = 'fabric') {
 				// Always installed on the client: in singleplayer the player's game is also the
 				// server, so server-only mods (RightClickHarvest) still need to be there.
 				client: optional ? 'optional' : 'required',
-				server: optional ? 'optional' : side(project.server_side),
+				server: optional ? 'optional' : serverNeeds.has(project.id) ? 'required' : side(project.server_side),
 			},
 			downloads: [file.url],
 			fileSize: file.size,

@@ -40,5 +40,8 @@
 		"makeup-ultra-fast-shaders"
 	],
 	"optional": [],
-	"exclude": []
+	"exclude": [],
+	"serverRequired": [
+		"fabric-api"
+	]
 }
