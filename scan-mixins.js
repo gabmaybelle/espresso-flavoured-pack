@@ -15,7 +15,8 @@ const TARGETS = [
 	'net/minecraft/world/entity/MobCategory',
 	'net/minecraft/server/level/ServerChunkCache',
 	'net/minecraft/world/entity/player/Player',
-	'net/minecraft/client/player/AbstractClientPlayer',
+	'net/minecraft/client/player/LocalPlayer',
+	'net/minecraft/world/food/FoodProperties',
 	'net/minecraft/world/entity/LivingEntity',
 	'net/minecraft/world/entity/player/Inventory',
 ];
