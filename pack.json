@@ -1,0 +1,19 @@
+{
+	"name": "Espresso Flavoured",
+	"version": "0.1.0",
+	"summary": "A shot of espresso for your survival world: less stress, less grind, more building.",
+	"minecraft": "26.3",
+	"fabricLoader": "0.19.5",
+	"mods": [
+		"fabric-api",
+		"terralith", "lithostitched",
+		"universal-graves",
+		"natures-compass", "explorers-compass", "xaeros-world-map", "xaeros-minimap",
+		"beautify-refabricated", "rechiseled",
+		"mouse-tweaks", "jei", "jade", "modmenu", "controlling", "searchables",
+		"sodium", "lithium", "ferrite-core", "modernfix-mvus", "immediatelyfast", "entityculling", "dynamic-fps", "iris"
+	],
+	"shaders": ["makeup-ultra-fast-shaders"],
+	"optional": [],
+	"exclude": []
+}
