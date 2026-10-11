@@ -37,7 +37,9 @@
 		"towns-and-towers",
 		"entity-model-features",
 		"entitytexturefeatures",
-		"visuality"
+		"visuality",
+		"zoomify",
+		"fallingtree"
 	],
 	"shaders": [
 		"makeup-ultra-fast-shaders"
