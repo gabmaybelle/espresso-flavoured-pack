@@ -83,19 +83,23 @@ async function newestVersion(id, loader = 'fabric') {
 			fileSize: file.size,
 		});
 	}
-	// Shader packs (Iris) from Modrinth, installed client-side only.
-	for (const slug of pack.shaders || []) {
+	// Shader packs (Iris) and resource packs from Modrinth, installed client-side only.
+	const extras = [
+		...(pack.shaders || []).map(slug => ({ slug, loader: 'iris', folder: 'shaderpacks', reason: 'shader' })),
+		...(pack.resourcePacks || []).map(slug => ({ slug, loader: 'minecraft', folder: 'resourcepacks', reason: 'resource pack' })),
+	];
+	for (const { slug, loader, folder, reason } of extras) {
 		const project = await api(`/project/${slug}`);
-		const version = await newestVersion(project.id, 'iris');
+		const version = await newestVersion(project.id, loader);
 		const file = version.files.find(f => f.primary) || version.files[0];
 		files.push({
-			path: `shaderpacks/${file.filename}`,
+			path: `${folder}/${file.filename}`,
 			hashes: { sha1: file.hashes.sha1, sha512: file.hashes.sha512 },
 			env: { client: 'required', server: 'unsupported' },
 			downloads: [file.url],
 			fileSize: file.size,
 		});
-		chosen.set(project.id, { project, version, reason: 'shader' });
+		chosen.set(project.id, { project, version, reason });
 	}
 	files.sort((a, b) => a.path.localeCompare(b.path));
 

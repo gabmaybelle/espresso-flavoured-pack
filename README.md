@@ -11,7 +11,7 @@ This is the modpack around the [Espresso Flavoured mod](https://github.com/gabma
 - **The world:** Terralith (with Lithostitched) and Towns and Towers, for more variety and more building blocks within reach.
 - **Finding your way:** Nature's Compass, Explorer's Compass, and Xaero's World Map and Minimap.
 - **Decorating:** Beautify, Rechiseled, and Continuity for connected glass and bookshelves.
-- **Atmosphere:** Falling Leaves, Particle Rain, AmbientSounds and BetterGrassify.
+- **Atmosphere:** Falling Leaves, Particle Rain, Visuality, AmbientSounds and BetterGrassify, plus the Fresh Animations resource pack (with Entity Model Features and Entity Texture Features) so mobs blink, look around and move more naturally. Switch it on under Options > Resource Packs.
 - **Quality of life:** JEI, Jade, Mouse Tweaks, Controlling, Searchables and Mod Menu.
 - **Performance:** Sodium, Lithium, FerriteCore, ModernFix, ImmediatelyFast, Entity Culling and Dynamic FPS, plus Iris with the MakeUp UltraFast shader.
 

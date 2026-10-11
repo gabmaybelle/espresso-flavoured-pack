@@ -34,10 +34,16 @@
 		"fallingleaves",
 		"particle-rain",
 		"ambientsounds",
-		"towns-and-towers"
+		"towns-and-towers",
+		"entity-model-features",
+		"entitytexturefeatures",
+		"visuality"
 	],
 	"shaders": [
 		"makeup-ultra-fast-shaders"
+	],
+	"resourcePacks": [
+		"fresh-animations"
 	],
 	"optional": [],
 	"exclude": [],
