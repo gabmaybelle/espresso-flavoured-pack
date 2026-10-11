@@ -77,7 +77,9 @@ async function newestVersion(id, loader = 'fabric') {
 				// Always installed on the client: in singleplayer the player's game is also the
 				// server, so server-only mods (RightClickHarvest) still need to be there.
 				client: optional ? 'optional' : 'required',
-				server: optional ? 'optional' : serverNeeds.has(project.id) ? 'required' : side(project.server_side),
+				// An optional client-only mod (Entity Model Features) still never goes on a server.
+				server: serverNeeds.has(project.id) ? 'required'
+					: optional && side(project.server_side) !== 'unsupported' ? 'optional' : side(project.server_side),
 			},
 			downloads: [file.url],
 			fileSize: file.size,
@@ -95,7 +97,7 @@ async function newestVersion(id, loader = 'fabric') {
 		files.push({
 			path: `${folder}/${file.filename}`,
 			hashes: { sha1: file.hashes.sha1, sha512: file.hashes.sha512 },
-			env: { client: 'required', server: 'unsupported' },
+			env: { client: (pack.optional || []).includes(slug) ? 'optional' : 'required', server: 'unsupported' },
 			downloads: [file.url],
 			fileSize: file.size,
 		});

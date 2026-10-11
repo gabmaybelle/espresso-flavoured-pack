@@ -49,7 +49,11 @@
 	"resourcePacks": [
 		"fresh-animations"
 	],
-	"optional": [],
+	"optional": [
+		"fresh-animations",
+		"entity-model-features",
+		"entitytexturefeatures"
+	],
 	"exclude": [],
 	"serverRequired": [
 		"fabric-api"
