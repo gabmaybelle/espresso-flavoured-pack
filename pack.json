@@ -41,10 +41,12 @@
 		"zoomify",
 		"fallingtree",
 		"chunky",
-		"nemos-inventory-sorting"
+		"nemos-inventory-sorting",
+		"distanthorizons"
 	],
 	"shaders": [
-		"makeup-ultra-fast-shaders"
+		"makeup-ultra-fast-shaders",
+		"complementary-reimagined"
 	],
 	"resourcePacks": [
 		"fresh-animations"
@@ -52,7 +54,9 @@
 	"optional": [
 		"fresh-animations",
 		"entity-model-features",
-		"entitytexturefeatures"
+		"entitytexturefeatures",
+		"distanthorizons",
+		"complementary-reimagined"
 	],
 	"exclude": [],
 	"serverRequired": [
