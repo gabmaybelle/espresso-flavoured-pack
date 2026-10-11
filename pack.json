@@ -40,7 +40,8 @@
 		"visuality",
 		"zoomify",
 		"fallingtree",
-		"chunky"
+		"chunky",
+		"nemos-inventory-sorting"
 	],
 	"shaders": [
 		"makeup-ultra-fast-shaders"

@@ -13,7 +13,7 @@ This is the modpack around the [Espresso Flavoured mod](https://github.com/gabma
 - **A smoother start:** Chunky. In a new world, run `/chunky radius 500` and then `/chunky start`, and it builds the land around you ahead of time, so exploring near home has no world-generation hiccups.
 - **Decorating:** Beautify, Rechiseled, and Continuity for connected glass and bookshelves.
 - **Atmosphere:** Falling Leaves, Particle Rain, Visuality, AmbientSounds and BetterGrassify, plus the Fresh Animations resource pack (with Entity Model Features and Entity Texture Features) so mobs blink, look around and move more naturally. Switch it on under Options > Resource Packs.
-- **Quality of life:** JEI, Jade, Zoomify (hold C to zoom, scroll to zoom further), FallingTree, Mouse Tweaks, Controlling, Searchables and Mod Menu. FallingTree fells a whole tree when you chop its trunk (crouch to chop one log); it only counts natural leaves, so log builds with leaves on them are safe.
+- **Quality of life:** JEI, Jade, Nemo's Inventory Sorting (a sort button on chests and your inventory), Zoomify (hold C to zoom, scroll to zoom further), FallingTree, Mouse Tweaks, Controlling, Searchables and Mod Menu. FallingTree fells a whole tree when you chop its trunk (crouch to chop one log); it only counts natural leaves, so log builds with leaves on them are safe.
 - **Performance:** Sodium, Lithium, FerriteCore, ModernFix, ImmediatelyFast, Entity Culling and Dynamic FPS, plus Iris with the MakeUp UltraFast shader.
 
 ## Playing it
