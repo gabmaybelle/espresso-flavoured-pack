@@ -39,7 +39,8 @@
 		"entitytexturefeatures",
 		"visuality",
 		"zoomify",
-		"fallingtree"
+		"fallingtree",
+		"chunky"
 	],
 	"shaders": [
 		"makeup-ultra-fast-shaders"

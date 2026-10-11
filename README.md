@@ -10,6 +10,7 @@ This is the modpack around the [Espresso Flavoured mod](https://github.com/gabma
 - **Graves:** Universal Graves keeps everything else safe where you fell.
 - **The world:** Terralith (with Lithostitched) and Towns and Towers, for more variety and more building blocks within reach.
 - **Finding your way:** Nature's Compass, Explorer's Compass, and Xaero's World Map and Minimap.
+- **A smoother start:** Chunky. In a new world, run `/chunky radius 500` and then `/chunky start`, and it builds the land around you ahead of time, so exploring near home has no world-generation hiccups.
 - **Decorating:** Beautify, Rechiseled, and Continuity for connected glass and bookshelves.
 - **Atmosphere:** Falling Leaves, Particle Rain, Visuality, AmbientSounds and BetterGrassify, plus the Fresh Animations resource pack (with Entity Model Features and Entity Texture Features) so mobs blink, look around and move more naturally. Switch it on under Options > Resource Packs.
 - **Quality of life:** JEI, Jade, Zoomify (hold C to zoom, scroll to zoom further), FallingTree, Mouse Tweaks, Controlling, Searchables and Mod Menu. FallingTree fells a whole tree when you chop its trunk (crouch to chop one log); it only counts natural leaves, so log builds with leaves on them are safe.
@@ -21,7 +22,7 @@ Grab the `.mrpack` and import it into the Modrinth app (or Prism Launcher, ATLau
 
 ## Running a server
 
-Every player needs the pack, and the server needs the server-side mods. `node install-server.js <folder>` sets up a Fabric 26.3 server folder with exactly the mods a server needs (add `--with-optional` for the optional performance ones). Two things to know: new 26.3 servers have the whitelist turned on, and Terralith makes new chunks slow to generate, so pre-generating your world helps a lot.
+Every player needs the pack, and the server needs the server-side mods. `node install-server.js <folder>` sets up a Fabric 26.3 server folder with exactly the mods a server needs (add `--with-optional` for the optional performance ones). Two things to know: new 26.3 servers have the whitelist turned on, and Terralith makes new chunks slow to generate, so pre-generating your world helps a lot (Chunky is in the pack for that).
 
 ## Building it yourself
 
