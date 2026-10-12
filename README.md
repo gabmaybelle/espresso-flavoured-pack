@@ -22,11 +22,15 @@ This is the modpack around the [Espresso Flavoured mod](https://github.com/gabma
 
 Grab the `.mrpack` and import it into the Modrinth app (or Prism Launcher, ATLauncher or CurseForge). You'll need Minecraft 26.3; the launcher sorts out Fabric for you. A few parts are still in beta for 26.3 (JEI, Visuality and Fresh Animations), as many mods are this early in a version.
 
+**Give it 4 GB of memory.** Launchers often start at 2 GB, which is just enough to get going but leaves little room: once you're exploring, the game keeps about 1 to 1.8 GB in use, so at 2 GB it's nearly full and stutters more as your world grows. In the Modrinth app it's under the instance's settings, then Java and memory. 3 GB is the least we'd use; a PC with 8 GB of RAM or more is comfortable.
+
+**What to expect:** on a budget gaming laptop (Core i5-13420H, RTX 3050 laptop GPU, 16 GB) at 1080p with the MakeUp shader and the default render distance of 12, it runs at about 50 to 90 FPS while exploring new land, and a little lower just after a new world opens while the land around spawn is still being built. Most of the work there is generating Terralith's land, so your processor matters more than your graphics card; pre-generating with Chunky smooths it out. On integrated graphics, turn the shader off or the render distance down.
+
 ## Running a server
 
 Every player needs the pack, and the server needs the server-side mods. `node install-server.js <folder>` sets up a Fabric 26.3 server folder with exactly the mods a server needs (add `--with-optional` for the optional performance ones). Two things to know:
 
-- **The server's settings win.** Espresso's settings (safe home radius, longer days, tools per bundle and so on) come from the server's `config/espresso.properties`, and players' bundles follow the server's "Tools per Bundle".
+- **The server's settings win.** Espresso's settings (safe home radius, longer days, tools per bundle and so on) come from the server's `config/espresso_flavoured.properties`, and players' bundles follow the server's "Tools per Bundle".
 - **Keep everyone on the same version.** Update the server and every player to the same pack version together, so their Espresso Flavoured matches. Like a player's game, the server keeps its own settings through updates: the pack's defaults only fill in files it doesn't have yet.
 - **Before you invite anyone:** new 26.3 servers have the whitelist turned on, and Terralith makes new chunks slow to generate, so pre-generating your world helps a lot (Chunky is in the pack for that).
 
