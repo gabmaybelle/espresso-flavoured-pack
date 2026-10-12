@@ -42,6 +42,17 @@ function readZip(file) {
 		fs.writeFileSync(path.join(dir, f.path), body);
 		count++;
 	}
+	// Our own jar's file name changes between versions, and two Espresso jars can't load together,
+	// so move any older one aside (into old-espresso-jars/, not deleted) before copying the new one.
+	const ours = [...zip.keys()].filter(n => /^(server-)?overrides\/mods\/[^/]+$/.test(n)).map(n => n.split('/').pop());
+	const modsDir = path.join(dir, 'mods');
+	for (const jar of fs.existsSync(modsDir) ? fs.readdirSync(modsDir) : []) {
+		if (/^espresso-flavoured.*\.jar$/i.test(jar) && !ours.includes(jar)) {
+			fs.mkdirSync(path.join(dir, 'old-espresso-jars'), { recursive: true });
+			fs.renameSync(path.join(modsDir, jar), path.join(dir, 'old-espresso-jars', jar));
+			console.log(`moved the old ${jar} to old-espresso-jars/`);
+		}
+	}
 	for (const [name, data] of zip) {
 		for (const prefix of ['overrides/', 'server-overrides/']) {
 			if (name.startsWith(prefix) && !name.endsWith('/')) {

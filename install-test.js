@@ -20,6 +20,16 @@ const index = JSON.parse(fs.readFileSync(path.join(ROOT, 'build', 'stage', 'modr
 		fs.writeFileSync(dest, buf);
 		n++;
 	}
+	// Our own jar's file name changes between versions, and two Espresso jars can't load together,
+	// so move any older one aside (into old-espresso-jars/, not deleted) before copying the new one.
+	const ours = fs.readdirSync(path.join(ROOT, 'build', 'stage', 'overrides', 'mods'));
+	for (const jar of fs.readdirSync(path.join(dir, 'mods'))) {
+		if (/^espresso-flavoured.*\.jar$/i.test(jar) && !ours.includes(jar)) {
+			fs.mkdirSync(path.join(dir, 'old-espresso-jars'), { recursive: true });
+			fs.renameSync(path.join(dir, 'mods', jar), path.join(dir, 'old-espresso-jars', jar));
+			console.log(`moved the old ${jar} to old-espresso-jars/`);
+		}
+	}
 	fs.cpSync(path.join(ROOT, 'build', 'stage', 'overrides'), dir, { recursive: true });
 	console.log(`installed ${n} files (sha1 verified) + overrides into ${dir}`);
 })().catch(e => { console.error(e.message); process.exit(1); });
