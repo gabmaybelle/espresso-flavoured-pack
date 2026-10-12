@@ -2,7 +2,7 @@
 
 *A shot of espresso for your survival world: less stress, less grind, more building.*
 
-This is the modpack around the [Espresso Flavoured mod](https://github.com/gabmaybelle/espresso-flavoured): a cozy, builder-friendly survival setup for Minecraft 26.3 on Fabric. It's meant to run well on an ordinary PC, with a light shader you can switch on when you want things to look lovely.
+This is the modpack around the [Espresso Flavoured mod](https://github.com/gabmaybelle/espresso-flavoured): a cozy, builder-friendly survival setup for Minecraft 26.3 on Fabric. It's meant to run well on an ordinary PC, with a light shader on from the start so things look lovely straight away.
 
 ## What's inside
 
@@ -14,7 +14,7 @@ This is the modpack around the [Espresso Flavoured mod](https://github.com/gabma
 - **Decorating:** Beautify, Rechiseled, and Continuity for connected glass and bookshelves.
 - **Atmosphere:** Falling Leaves, Particle Rain, Visuality, AmbientSounds and BetterGrassify, plus, if you'd like it, the Fresh Animations resource pack (with Entity Model Features and Entity Texture Features) so mobs blink, look around and move more naturally. It's optional, so the pack stays light: tick all three when you install, then switch Fresh Animations on under Options > Resource Packs.
 - **Quality of life:** JEI, Jade, Nemo's Inventory Sorting (a sort button on chests and your inventory), Zoomify (hold C to zoom, scroll to zoom further), FallingTree, Mouse Tweaks, Controlling, Searchables and Mod Menu. FallingTree fells a whole tree when you chop its trunk (crouch to chop one log); it only counts natural leaves, so log builds with leaves on them are safe.
-- **Performance:** Sodium, Lithium, FerriteCore, ModernFix, ImmediatelyFast, Entity Culling and Dynamic FPS, plus Iris with the MakeUp UltraFast shader.
+- **Performance:** Sodium, Lithium, FerriteCore, ModernFix, ImmediatelyFast, Entity Culling and Dynamic FPS, plus Iris with the MakeUp UltraFast shader, which is on from the first launch (it's the lightest shader there is; switch it off under Options > Video Settings > Shader Packs if your PC struggles). A pack update puts MakeUp back if you'd picked another shader.
 - **Optional scenery, for stronger PCs:** tick these when you install if you'd like them.
   - **Distant Horizons** keeps far-off mountains, forests and coasts on the horizon. It starts on gentle settings (2 threads, 96 chunks of distant view); raise them in its own settings menu if your PC has room. Updating the pack puts these two settings back to the gentle ones.
   - **Complementary Reimagined**, a richer shader with soft shadows and clouds. Pick it under Options > Video Settings > Shader Packs; MakeUp UltraFast stays the light default.
