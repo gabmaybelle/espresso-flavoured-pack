@@ -132,6 +132,18 @@ async function pickVersion(project, loader = 'fabric') {
 		return;
 	}
 
+	// The default shader is switched on by file name, so an update that renames it would leave new
+	// players with no shader and no error. Stop here, before the lock or the pack is written.
+	const irisFile = path.join(ROOT, 'overrides', 'config', 'yosbr', 'config', 'iris.properties');
+	if (fs.existsSync(irisFile)) {
+		const wanted = (fs.readFileSync(irisFile, 'utf8').match(/^shaderPack=(.+?)\s*$/m) || [])[1];
+		if (wanted && !files.some(f => f.path === `shaderpacks/${wanted}`)) {
+			const have = files.filter(f => f.path.startsWith('shaderpacks/')).map(f => f.path.slice('shaderpacks/'.length));
+			throw new Error(`iris.properties turns on shaderPack=${wanted}, but the pack's shader files are: ${have.join(', ')}.\n`
+				+ 'Update shaderPack in overrides/config/yosbr/config/iris.properties to the new file name, then build again.');
+		}
+	}
+
 	// The lock: every project at the exact version this build used, so the next build is the same.
 	const lock = {};
 	for (const { project, version } of [...chosen.values()].sort((a, b) => a.project.slug.localeCompare(b.project.slug))) {

@@ -14,7 +14,7 @@ This is the modpack around the [Espresso Flavoured mod](https://github.com/gabma
 - **Decorating:** Beautify, Rechiseled, and Continuity for connected glass and bookshelves.
 - **Atmosphere:** Falling Leaves, Particle Rain, Visuality, AmbientSounds and BetterGrassify, plus, if you'd like it, the Fresh Animations resource pack (with Entity Model Features and Entity Texture Features) so mobs blink, look around and move more naturally. It's optional, so the pack stays light: tick all three when you install, then switch Fresh Animations on under Options > Resource Packs.
 - **Quality of life:** JEI, Jade, Nemo's Inventory Sorting (a sort button on chests and your inventory), Zoomify (hold C to zoom, scroll to zoom further), FallingTree, Trinkets Updated (slots for Espresso's café charms: right-click a charm to wear it), Mouse Tweaks, Controlling, Searchables and Mod Menu (set to count only the mods themselves, not the libraries and parts bundled inside them).
-- **Your settings stay yours:** the pack's starting settings (the shader, Mod Menu, FallingTree) are only put in place the first time, thanks to Your Options Shall Be Respected, so an update never resets anything you've changed. FallingTree fells a whole tree when you chop its trunk (crouch to chop one log); it only counts natural leaves, so log builds with leaves on them are safe.
+- **Your settings stay yours:** the pack's starting settings (the shader, Mod Menu, FallingTree) are only put in place the first time, thanks to Your Options Shall Be Respected, so an update never resets anything you've changed. FallingTree fells a whole tree only when you crouch while chopping its trunk; a normal swing takes one log, so a stray click never brings down a log build. (With the Ember Glove on, a normal swing gives charcoal and a crouching one fells the tree for logs.)
 - **Performance:** Sodium, Lithium, FerriteCore, ModernFix, ImmediatelyFast, Entity Culling and Dynamic FPS, plus Iris with the MakeUp UltraFast shader, which is on from the first launch (it's a very light shader; switch it off under Options > Video Settings > Shader Packs if your PC struggles).
 - **Optional, for stronger PCs:** **Complementary Reimagined**, a richer shader with soft shadows and clouds. Tick it when you install, then pick it under Options > Video Settings > Shader Packs; MakeUp UltraFast stays the light default.
 
@@ -28,7 +28,11 @@ Grab the `.mrpack` and import it into the Modrinth app (or Prism Launcher, ATLau
 
 ## Running a server
 
-Every player needs the pack, and the server needs the server-side mods. `node install-server.js <folder>` sets up a Fabric 26.3 server folder with exactly the mods a server needs (add `--with-optional` for the optional performance ones). Two things to know:
+Every player needs the pack, and the server needs the server-side mods. The easy way: most server hosts can install a `.mrpack` for you (look for a Modrinth or "import modpack" option). They read the pack's list and skip the mods that only belong on players' computers.
+
+If you'd rather set up a server folder yourself, `node install-server.js <folder>` from this repository does the same, with exactly the mods a server needs (add `--with-optional` for the optional performance ones). It needs [Node.js](https://nodejs.org/).
+
+A few things to know:
 
 - **The server's settings win.** Espresso's settings (safe home radius, longer days, tools per bundle and so on) come from the server's `config/espresso_flavoured.properties`, and players' bundles follow the server's "Tools per Bundle".
 - **Keep everyone on the same version.** Update the server and every player to the same pack version together, so their Espresso Flavoured matches. Like a player's game, the server keeps its own settings through updates: the pack's defaults only fill in files it doesn't have yet.
