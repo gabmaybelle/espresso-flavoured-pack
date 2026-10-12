@@ -1,7 +1,7 @@
 {
 	"name": "Espresso Flavoured",
 	"version": "0.3.0",
-	"summary": "A shot of espresso for your survival world: less stress, less grind, more building.",
+	"summary": "A cozy, builder-friendly survival pack that runs on an everyday PC.",
 	"minecraft": "26.3",
 	"fabricLoader": "0.19.5",
 	"mods": [
@@ -54,8 +54,6 @@
 	],
 	"optional": [
 		"fresh-animations",
-		"entity-model-features",
-		"entitytexturefeatures",
 		"complementary-reimagined"
 	],
 	"exclude": [],
