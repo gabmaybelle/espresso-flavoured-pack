@@ -19,6 +19,12 @@ const TARGETS = [
 	'net/minecraft/world/food/FoodProperties',
 	'net/minecraft/world/entity/LivingEntity',
 	'net/minecraft/world/entity/player/Inventory',
+	// The spawn gazebo's protection.
+	'net/minecraft/world/level/ServerExplosion',
+	'net/minecraft/world/level/block/FireBlock',
+	'net/minecraft/world/level/block/piston/PistonBaseBlock',
+	'net/minecraft/world/item/BlockItem',
+	'net/minecraft/world/item/BucketItem',
 ];
 
 function entries(buf) {

@@ -1,8 +1,13 @@
-// Builds the Espresso Flavoured .mrpack: resolves the newest Fabric 26.3 build of every mod in
-// pack.json (plus their required dependencies) from Modrinth, writes modrinth.index.json,
-// and zips it with the overrides folder.
+// Builds the Espresso Flavoured .mrpack: takes every mod in pack.json (plus their required
+// dependencies) from Modrinth at the exact version pinned in pack.lock.json, writes
+// modrinth.index.json, and zips it with the overrides folder.
 //
-//   node build-pack.js            -> dist/Espresso Flavoured-<version>.mrpack
+//   node build-pack.js             -> dist/Espresso Flavoured-<version>.mrpack, from the lock
+//   node build-pack.js --outdated  -> lists the mods with a newer 26.3 build; changes nothing
+//   node build-pack.js --update    -> moves everything to the newest builds, rewrites the lock
+//                                     and lists what changed, then builds
+//
+// A mod new to pack.json (or a new dependency) gets its newest build and joins the lock.
 //
 // Requires Node 22+ (fetch).
 const fs = require('fs'), path = require('path');
@@ -15,6 +20,9 @@ const api = p => fetch('https://api.modrinth.com/v2' + p, { headers: UA }).then(
 	return r.json();
 });
 const RANK = { release: 0, beta: 1, alpha: 2 };
+const UPDATE = process.argv.includes('--update'), OUTDATED = process.argv.includes('--outdated');
+const LOCK = path.join(ROOT, 'pack.lock.json');
+const pinned = fs.existsSync(LOCK) ? JSON.parse(fs.readFileSync(LOCK, 'utf8')).projects : {};
 
 async function newestVersion(id, loader = 'fabric') {
 	const q = `?loaders=${encodeURIComponent(JSON.stringify([loader]))}&game_versions=${encodeURIComponent(JSON.stringify([pack.minecraft]))}`;
@@ -23,6 +31,12 @@ async function newestVersion(id, loader = 'fabric') {
 	// Prefer the newest release; fall back to the newest beta, then alpha.
 	versions.sort((a, b) => RANK[a.version_type] - RANK[b.version_type] || b.date_published.localeCompare(a.date_published));
 	return versions[0];
+}
+
+/** The pinned version of a project, or its newest build when it isn't pinned yet (or with --update). */
+async function pickVersion(project, loader = 'fabric') {
+	const pin = pinned[project.slug];
+	return pin && !UPDATE ? api(`/version/${pin.version}`) : newestVersion(project.id, loader);
 }
 
 (async () => {
@@ -36,14 +50,14 @@ async function newestVersion(id, loader = 'fabric') {
 		if ((pack.exclude || []).includes(project.slug)) continue;
 		let version;
 		try {
-			version = await newestVersion(project.id);
+			version = await pickVersion(project);
 		} catch (e) {
 			// Multi-loader jars sometimes list Forge-only libraries as required.
 			if (reason === 'listed') throw e;
 			console.warn(`skipping ${project.title} (${reason}): ${e.message}`);
 			continue;
 		}
-		chosen.set(project.id, { project, version, reason });
+		chosen.set(project.id, { project, version, reason, loader: 'fabric' });
 		deps.set(project.id, version.dependencies.filter(d => d.dependency_type === 'required' && d.project_id).map(d => d.project_id));
 		for (const dep of version.dependencies) {
 			if (dep.dependency_type === 'required' && dep.project_id && !chosen.has(dep.project_id)) {
@@ -92,7 +106,7 @@ async function newestVersion(id, loader = 'fabric') {
 	];
 	for (const { slug, loader, folder, reason } of extras) {
 		const project = await api(`/project/${slug}`);
-		const version = await newestVersion(project.id, loader);
+		const version = await pickVersion(project, loader);
 		const file = version.files.find(f => f.primary) || version.files[0];
 		files.push({
 			path: `${folder}/${file.filename}`,
@@ -101,9 +115,37 @@ async function newestVersion(id, loader = 'fabric') {
 			downloads: [file.url],
 			fileSize: file.size,
 		});
-		chosen.set(project.id, { project, version, reason });
+		chosen.set(project.id, { project, version, reason, loader });
 	}
 	files.sort((a, b) => a.path.localeCompare(b.path));
+
+	if (OUTDATED) {
+		let n = 0;
+		for (const { project, version, loader } of [...chosen.values()].sort((a, b) => a.project.title.localeCompare(b.project.title))) {
+			const newest = await newestVersion(project.id, loader);
+			if (newest.id !== version.id) {
+				n++;
+				console.log(`${project.title}: ${version.version_number} -> ${newest.version_number} [${newest.version_type}]`);
+			}
+		}
+		console.log(n ? `\n${n} with updates; run with --update to take them.` : 'Everything is on its newest 26.3 build.');
+		return;
+	}
+
+	// The lock: every project at the exact version this build used, so the next build is the same.
+	const lock = {};
+	for (const { project, version } of [...chosen.values()].sort((a, b) => a.project.slug.localeCompare(b.project.slug))) {
+		lock[project.slug] = { version: version.id, number: version.version_number, type: version.version_type };
+	}
+	fs.writeFileSync(LOCK, JSON.stringify({ minecraft: pack.minecraft, projects: lock }, null, '\t') + '\n');
+	const changes = [];
+	for (const slug of new Set([...Object.keys(pinned), ...Object.keys(lock)])) {
+		const was = pinned[slug], now = lock[slug];
+		if (!was) changes.push(`+ ${slug} ${now.number}`);
+		else if (!now) changes.push(`- ${slug} ${was.number}`);
+		else if (was.version !== now.version) changes.push(`  ${slug} ${was.number} -> ${now.number}`);
+	}
+	if (changes.length) console.log(`pack.lock.json changed:\n${changes.sort().join('\n')}\n`);
 
 	const index = {
 		formatVersion: 1,

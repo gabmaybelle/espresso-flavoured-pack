@@ -1,5 +1,7 @@
 // Installs a built .mrpack as a dedicated server would: only the files marked as needed on the
-// server, plus the overrides (our own jar). Checks every download's sha1.
+// server, plus the overrides (our own jar). Checks every download's sha1. Default configs under
+// config/yosbr/ are put in place only where the server has no such file yet, as the YOSBR mod
+// does for players, so a pack update never resets a server's own settings.
 //   node install-server.js <server folder> [--with-optional]
 const fs = require('fs'), path = require('path'), crypto = require('crypto'), zlib = require('zlib');
 const ROOT = __dirname;
@@ -43,9 +45,15 @@ function readZip(file) {
 	for (const [name, data] of zip) {
 		for (const prefix of ['overrides/', 'server-overrides/']) {
 			if (name.startsWith(prefix) && !name.endsWith('/')) {
-				const out = path.join(dir, name.slice(prefix.length));
+				const rel = name.slice(prefix.length);
+				const out = path.join(dir, rel);
 				fs.mkdirSync(path.dirname(out), { recursive: true });
 				fs.writeFileSync(out, data);
+				const real = rel.startsWith('config/yosbr/') && path.join(dir, rel.slice('config/yosbr/'.length));
+				if (real && !fs.existsSync(real)) {
+					fs.mkdirSync(path.dirname(real), { recursive: true });
+					fs.writeFileSync(real, data);
+				}
 			}
 		}
 	}

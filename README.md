@@ -13,24 +13,26 @@ This is the modpack around the [Espresso Flavoured mod](https://github.com/gabma
 - **A smoother start:** Chunky. In a new world, run `/chunky radius 500` and then `/chunky start`, and it builds the land around you ahead of time, so exploring near home has no world-generation hiccups.
 - **Decorating:** Beautify, Rechiseled, and Continuity for connected glass and bookshelves.
 - **Atmosphere:** Falling Leaves, Particle Rain, Visuality, AmbientSounds and BetterGrassify, plus, if you'd like it, the Fresh Animations resource pack (with Entity Model Features and Entity Texture Features) so mobs blink, look around and move more naturally. It's optional, so the pack stays light: tick all three when you install, then switch Fresh Animations on under Options > Resource Packs.
-- **Quality of life:** JEI, Jade, Nemo's Inventory Sorting (a sort button on chests and your inventory), Zoomify (hold C to zoom, scroll to zoom further), FallingTree, Trinkets Updated (slots for Espresso's café charms: right-click a charm to wear it), Mouse Tweaks, Controlling, Searchables and Mod Menu (set to count only the mods themselves, not the libraries and parts bundled inside them). FallingTree fells a whole tree when you chop its trunk (crouch to chop one log); it only counts natural leaves, so log builds with leaves on them are safe.
-- **Performance:** Sodium, Lithium, FerriteCore, ModernFix, ImmediatelyFast, Entity Culling and Dynamic FPS, plus Iris with the MakeUp UltraFast shader, which is on from the first launch (it's the lightest shader there is; switch it off under Options > Video Settings > Shader Packs if your PC struggles). A pack update puts MakeUp back if you'd picked another shader.
+- **Quality of life:** JEI, Jade, Nemo's Inventory Sorting (a sort button on chests and your inventory), Zoomify (hold C to zoom, scroll to zoom further), FallingTree, Trinkets Updated (slots for Espresso's café charms: right-click a charm to wear it), Mouse Tweaks, Controlling, Searchables and Mod Menu (set to count only the mods themselves, not the libraries and parts bundled inside them).
+- **Your settings stay yours:** the pack's starting settings (the shader, Mod Menu, FallingTree) are only put in place the first time, thanks to Your Options Shall Be Respected, so an update never resets anything you've changed. FallingTree fells a whole tree when you chop its trunk (crouch to chop one log); it only counts natural leaves, so log builds with leaves on them are safe.
+- **Performance:** Sodium, Lithium, FerriteCore, ModernFix, ImmediatelyFast, Entity Culling and Dynamic FPS, plus Iris with the MakeUp UltraFast shader, which is on from the first launch (it's a very light shader; switch it off under Options > Video Settings > Shader Packs if your PC struggles).
 - **Optional, for stronger PCs:** **Complementary Reimagined**, a richer shader with soft shadows and clouds. Tick it when you install, then pick it under Options > Video Settings > Shader Packs; MakeUp UltraFast stays the light default.
 
 ## Playing it
 
-Grab the `.mrpack` and import it into the Modrinth app (or Prism Launcher, ATLauncher or CurseForge). You'll need Minecraft 26.3; the launcher sorts out Fabric for you.
+Grab the `.mrpack` and import it into the Modrinth app (or Prism Launcher, ATLauncher or CurseForge). You'll need Minecraft 26.3; the launcher sorts out Fabric for you. A few parts are still in beta for 26.3 (JEI, Visuality and Fresh Animations), as many mods are this early in a version.
 
 ## Running a server
 
 Every player needs the pack, and the server needs the server-side mods. `node install-server.js <folder>` sets up a Fabric 26.3 server folder with exactly the mods a server needs (add `--with-optional` for the optional performance ones). Two things to know:
 
 - **The server's settings win.** Espresso's settings (safe home radius, longer days, tools per bundle and so on) come from the server's `config/espresso.properties`, and players' bundles follow the server's "Tools per Bundle".
-- **Keep everyone on the same version.** Update the server and every player to the same pack version together, so their Espresso Flavoured matches. new 26.3 servers have the whitelist turned on, and Terralith makes new chunks slow to generate, so pre-generating your world helps a lot (Chunky is in the pack for that).
+- **Keep everyone on the same version.** Update the server and every player to the same pack version together, so their Espresso Flavoured matches. Like a player's game, the server keeps its own settings through updates: the pack's defaults only fill in files it doesn't have yet.
+- **Before you invite anyone:** new 26.3 servers have the whitelist turned on, and Terralith makes new chunks slow to generate, so pre-generating your world helps a lot (Chunky is in the pack for that).
 
 ## Building it yourself
 
-`node build-pack.js` reads `pack.json`, finds the newest 26.3 Fabric build of every mod (and what each one needs) on Modrinth, and writes the `.mrpack` to `dist/`. `install-test.js` installs it into a test folder, and `scan-mixins.js` lists any mods that change the same parts of the game as Espresso Flavoured.
+`node build-pack.js` reads `pack.json`, takes every mod (and what each one needs) from Modrinth at the exact version pinned in `pack.lock.json`, and writes the `.mrpack` to `dist/`, so the same pack version always builds the same pack. `node build-pack.js --outdated` lists mods with a newer 26.3 build, and `--update` takes them, rewrites the lock and lists what changed. `install-test.js` installs it into a test folder, and `scan-mixins.js` lists any mods that change the same parts of the game as Espresso Flavoured.
 
 ## Credits and licences
 
