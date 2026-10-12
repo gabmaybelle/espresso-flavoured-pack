@@ -51,6 +51,11 @@
 			"number": "fabric-26.3-3.1.13",
 			"type": "release"
 		},
+		"durability-tooltip": {
+			"version": "5qPHfg1S",
+			"number": "1.2.0a-fabric-mc26.3",
+			"type": "release"
+		},
 		"dynamic-fps": {
 			"version": "Jwq069rR",
 			"number": "3.11.10",

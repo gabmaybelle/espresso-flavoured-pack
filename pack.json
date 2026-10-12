@@ -43,7 +43,8 @@
 		"zoomify",
 		"fallingtree",
 		"chunky",
-		"nemos-inventory-sorting"
+		"nemos-inventory-sorting",
+		"durability-tooltip"
 	],
 	"shaders": [
 		"makeup-ultra-fast-shaders",
