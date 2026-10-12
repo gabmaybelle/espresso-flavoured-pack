@@ -31,5 +31,10 @@ const index = JSON.parse(fs.readFileSync(path.join(ROOT, 'build', 'stage', 'modr
 		}
 	}
 	fs.cpSync(path.join(ROOT, 'build', 'stage', 'overrides'), dir, { recursive: true });
+	// A player's launcher also applies client-overrides (a test install is a player's game).
+	const clientOverrides = path.join(ROOT, 'build', 'stage', 'client-overrides');
+	if (fs.existsSync(clientOverrides)) {
+		fs.cpSync(clientOverrides, dir, { recursive: true });
+	}
 	console.log(`installed ${n} files (sha1 verified) + overrides into ${dir}`);
 })().catch(e => { console.error(e.message); process.exit(1); });

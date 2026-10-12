@@ -174,6 +174,10 @@ async function pickVersion(project, loader = 'fabric') {
 	fs.mkdirSync(stage, { recursive: true });
 	fs.writeFileSync(path.join(stage, 'modrinth.index.json'), JSON.stringify(index, null, '\t'));
 	fs.cpSync(path.join(ROOT, 'overrides'), path.join(stage, 'overrides'), { recursive: true });
+	// client-overrides: launchers apply these only on players' games (Pocket List), never on servers.
+	if (fs.existsSync(path.join(ROOT, 'client-overrides'))) {
+		fs.cpSync(path.join(ROOT, 'client-overrides'), path.join(stage, 'client-overrides'), { recursive: true });
+	}
 
 	fs.mkdirSync(path.join(ROOT, 'dist'), { recursive: true });
 	const out = path.join(ROOT, 'dist', `${pack.name}-${pack.version}.mrpack`);

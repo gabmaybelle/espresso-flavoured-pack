@@ -8,6 +8,7 @@
 - **Fresh Animations is optional**; Entity Model Features and Entity Texture Features, which it needs, are always installed, so ticking it at install is all it takes.
 - **Your settings stay yours:** the pack's starting settings (the shader, Mod Menu, FallingTree) are put in place only the first time, through Your Options Shall Be Respected, so updates never reset what you've changed.
 - **Crouch to fell a tree** with FallingTree; a normal swing takes one log, so a stray click never brings down a log build.
+- **Pocket List**, our own little checklist: press K, add what you're gathering (or pin a recipe from JEI), and watch it tick itself off as you collect. It sits bottom-right, out of the minimap's corner, and lives only on your game, never on a server.
 - Added since 0.2.0: Continuity, BetterGrassify, Falling Leaves, Particle Rain, AmbientSounds, Towns and Towers, Visuality, Zoomify, FallingTree, Chunky, Nemo's Inventory Sorting and Durability Tooltip. Mod Menu counts only the mods themselves, not their libraries.
 - Every mod's version is pinned in `pack.lock.json`, so the same pack version always builds the same pack.
 - Distant Horizons was tried and dropped: its far water met the real water as a visible rectangle under Complementary.
