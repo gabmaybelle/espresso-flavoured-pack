@@ -31,6 +31,23 @@ function readZip(file) {
 (async () => {
 	const zip = readZip(pack);
 	const index = JSON.parse(zip.get('modrinth.index.json').toString('utf8'));
+	// The files the last install put in place, so an update takes away what the pack no longer has
+	// (an older version of a mod) instead of leaving two copies to clash. Files this script didn't
+	// install (the server's own mods) are left alone; set-aside files go to old-pack-files/.
+	const manifest = path.join(dir, '.pack-installed.json');
+	const wanted = index.files.filter(f => {
+		const env = f.env ? f.env.server : 'required';
+		return env !== 'unsupported' && (env !== 'optional' || withOptional);
+	}).map(f => f.path);
+	const before = fs.existsSync(manifest) ? JSON.parse(fs.readFileSync(manifest, 'utf8')) : [];
+	for (const old of before) {
+		if (!wanted.includes(old) && fs.existsSync(path.join(dir, old))) {
+			const aside = path.join(dir, 'old-pack-files', old);
+			fs.mkdirSync(path.dirname(aside), { recursive: true });
+			fs.renameSync(path.join(dir, old), aside);
+			console.log(`moved ${old} to old-pack-files/ (no longer in the pack)`);
+		}
+	}
 	let count = 0;
 	for (const f of index.files) {
 		const env = f.env ? f.env.server : 'required';
@@ -68,5 +85,6 @@ function readZip(file) {
 			}
 		}
 	}
+	fs.writeFileSync(manifest, JSON.stringify([...wanted].sort(), null, '\t') + '\n');
 	console.log(`installed ${count} server files${withOptional ? ' (with optional)' : ''} + overrides into ${dir}`);
 })();

@@ -6,8 +6,22 @@ const ROOT = __dirname;
 const dir = path.resolve(process.argv[2]);
 const index = JSON.parse(fs.readFileSync(path.join(ROOT, 'build', 'stage', 'modrinth.index.json'), 'utf8'));
 
+// The files the last install put in place, so an update can take away what the pack no longer has
+// (an older JEI, say), the way a launcher does. Files this script didn't install are left alone.
+const MANIFEST = path.join(dir, '.pack-installed.json');
+
 (async () => {
 	fs.mkdirSync(path.join(dir, 'mods'), { recursive: true });
+	const wanted = new Set(index.files.filter(f => !(f.env && f.env.client === 'unsupported')).map(f => f.path));
+	const before = fs.existsSync(MANIFEST) ? JSON.parse(fs.readFileSync(MANIFEST, 'utf8')) : [];
+	for (const old of before) {
+		if (!wanted.has(old) && fs.existsSync(path.join(dir, old))) {
+			const aside = path.join(dir, 'old-pack-files', old);
+			fs.mkdirSync(path.dirname(aside), { recursive: true });
+			fs.renameSync(path.join(dir, old), aside);
+			console.log(`moved ${old} to old-pack-files/ (no longer in the pack)`);
+		}
+	}
 	let n = 0;
 	for (const f of index.files) {
 		if (f.env && f.env.client === 'unsupported') continue;
@@ -36,5 +50,6 @@ const index = JSON.parse(fs.readFileSync(path.join(ROOT, 'build', 'stage', 'modr
 	if (fs.existsSync(clientOverrides)) {
 		fs.cpSync(clientOverrides, dir, { recursive: true });
 	}
+	fs.writeFileSync(MANIFEST, JSON.stringify([...wanted].sort(), null, '\t') + '\n');
 	console.log(`installed ${n} files (sha1 verified) + overrides into ${dir}`);
 })().catch(e => { console.error(e.message); process.exit(1); });

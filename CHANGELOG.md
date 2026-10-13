@@ -12,7 +12,7 @@
 - Added since 0.2.0: Continuity, BetterGrassify, Falling Leaves, Particle Rain, AmbientSounds, Towns and Towers, Visuality, Zoomify, FallingTree, Chunky, Nemo's Inventory Sorting and Durability Tooltip. Mod Menu counts only the mods themselves, not their libraries.
 - Every mod's version is pinned in `pack.lock.json`, so the same pack version always builds the same pack.
 - Distant Horizons was tried and dropped: its far water met the real water as a visible rectangle under Complementary.
-- Servers: `install-server.js` installs just what a server needs, and both installers move an older Espresso jar aside before adding the new one.
+- Servers: `install-server.js` installs just what a server needs, and running either installer again after an update swaps in the new versions, moving anything the pack no longer has into `old-pack-files/`, so two versions of a mod never end up side by side.
 
 ## 0.2.0
 

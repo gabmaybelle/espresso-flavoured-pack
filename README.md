@@ -30,7 +30,7 @@ Grab the `.mrpack` and import it into the Modrinth app (or Prism Launcher, ATLau
 
 Every player needs the pack, and the server needs the server-side mods. The easy way: most server hosts can install a `.mrpack` for you (look for a Modrinth or "import modpack" option). They read the pack's list and skip the mods that only belong on players' computers.
 
-If you'd rather set up a server folder yourself, `node install-server.js <folder>` from this repository does the same, with exactly the mods a server needs (add `--with-optional` for the optional performance ones). It needs [Node.js](https://nodejs.org/).
+If you'd rather set up a server folder yourself, `node install-server.js <folder>` from this repository does the same, with exactly the mods a server needs (add `--with-optional` for the optional performance ones). It needs [Node.js](https://nodejs.org/). Run it again after a pack update and it swaps in the new versions, moving anything the pack no longer has into `old-pack-files/` (nothing is deleted, and mods you added yourself are left alone).
 
 A few things to know:
 
