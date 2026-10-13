@@ -1,0 +1,38 @@
+# Builds the .mrpack on every push and pull request, from the exact versions in pack.lock.json,
+# and checks the pack is whole: every mod in pack.json is pinned in the lock, and our own jars
+# (Core in overrides/mods, Pocket List in client-overrides/mods) are there. The built pack is
+# attached to each run under "Pack".
+
+name: build
+on: [pull_request, push]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v6
+      - name: setup node
+        uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+      - name: build the pack from the lock
+        run: node build-pack.js
+      - name: every mod is pinned in the lock
+        # Building from the lock leaves it as it was; a change means pack.json has a mod (or a
+        # dependency) that isn't pinned yet. Run `node build-pack.js` locally and commit the lock.
+        run: git diff --exit-code pack.lock.json
+      - name: our own jars are in the pack
+        run: |
+          ls build/stage/overrides/mods/espresso-flavoured-core-*.jar
+          ls build/stage/client-overrides/mods/pocket-list-*.jar
+          unzip -l dist/*.mrpack | grep -E 'overrides/mods/espresso-flavoured-core-.*\.jar'
+          unzip -l dist/*.mrpack | grep -E 'client-overrides/mods/pocket-list-.*\.jar'
+      - name: capture the pack
+        uses: actions/upload-artifact@v7
+        with:
+          name: Pack
+          path: dist/

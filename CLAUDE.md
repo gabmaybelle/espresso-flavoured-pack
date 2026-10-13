@@ -18,7 +18,8 @@ Modrinth. See README.md.
 - `node build-pack.js`: builds `dist/<name>-<version>.mrpack` from the lock. `--outdated` lists
   newer builds; `--update` takes them and rewrites the lock.
 - `node install-test.js test-instance`: installs the pack like a launcher would, for a test game.
-- There's no CI here. Test a change by installing it and opening a new world.
+- CI builds the pack from the lock on every push and checks every mod is pinned and our own
+  jars are inside. It can't play the pack: test a change by installing it and opening a new world.
 
 ## Gotchas
 
