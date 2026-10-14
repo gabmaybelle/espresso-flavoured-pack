@@ -4,6 +4,7 @@
 const fs = require('fs'), path = require('path'), zlib = require('zlib');
 
 const CRC = new Uint32Array(256).map((_, n) => { let c = n; for (let k = 0; k < 8; k++) c = c & 1 ? 0xedb88320 ^ (c >>> 1) : c >>> 1; return c >>> 0; });
+const DOS_1980 = 0x00210000; // 1980-01-01 00:00, the earliest valid DOS date (0 means month 0)
 const crc32 = buf => { let c = 0xffffffff; for (const b of buf) c = CRC[(c ^ b) & 255] ^ (c >>> 8); return (c ^ 0xffffffff) >>> 0; };
 
 function walk(dir, base = '') {
@@ -26,12 +27,12 @@ function zipDir(src, outFile) {
 		const crc = crc32(data);
 		const local = Buffer.alloc(30);
 		local.writeUInt32LE(0x04034b50, 0); local.writeUInt16LE(20, 4); local.writeUInt16LE(0x0800, 6); local.writeUInt16LE(8, 8);
-		local.writeUInt32LE(0, 10); local.writeUInt32LE(crc, 14); local.writeUInt32LE(comp.length, 18); local.writeUInt32LE(data.length, 22);
+		local.writeUInt32LE(DOS_1980, 10); local.writeUInt32LE(crc, 14); local.writeUInt32LE(comp.length, 18); local.writeUInt32LE(data.length, 22);
 		local.writeUInt16LE(name.length, 26); local.writeUInt16LE(0, 28);
 		parts.push(local, name, comp);
 		const cen = Buffer.alloc(46);
 		cen.writeUInt32LE(0x02014b50, 0); cen.writeUInt16LE(20, 4); cen.writeUInt16LE(20, 6); cen.writeUInt16LE(0x0800, 8); cen.writeUInt16LE(8, 10);
-		cen.writeUInt32LE(0, 12); cen.writeUInt32LE(crc, 16); cen.writeUInt32LE(comp.length, 20); cen.writeUInt32LE(data.length, 24);
+		cen.writeUInt32LE(DOS_1980, 12); cen.writeUInt32LE(crc, 16); cen.writeUInt32LE(comp.length, 20); cen.writeUInt32LE(data.length, 24);
 		cen.writeUInt16LE(name.length, 28); cen.writeUInt32LE(offset, 42);
 		central.push(cen, name);
 		offset += local.length + name.length + comp.length;
