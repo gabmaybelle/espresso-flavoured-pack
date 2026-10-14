@@ -11,7 +11,8 @@ Modrinth. See README.md.
 - `overrides/`: files every install gets: our own Core jar in `overrides/mods/`, and first-run
   settings under `overrides/config/yosbr/`. `client-overrides/`: players' games only (the
   Pocket List jar).
-- `build-pack.js`, `install-test.js`, `install-server.js`, `scan-mixins.js`, `zip.js`.
+- `build-pack.js`, `install-test.js`, `install-server.js` (both built on `pack-files.js`: the zip
+  reader, the downloads with their manifest, the overrides), `scan-mixins.js`, `zip.js`.
 
 ## Build and test
 
