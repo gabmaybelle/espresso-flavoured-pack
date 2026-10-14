@@ -2,25 +2,26 @@
 
 *A shot of espresso for your survival world: less stress, less grind, more building.*
 
-This is the modpack around the [Espresso Flavoured Core mod](https://github.com/gabmaybelle/espresso-flavoured): a cozy, builder-friendly survival setup for Minecraft 26.3 on Fabric. It's meant to run well on an ordinary PC, with a light shader on from the start so things look lovely straight away.
+This is the modpack around [Cozy Core](https://github.com/gabmaybelle/cozy-core): a cozy, builder-friendly survival setup for Minecraft 26.3 on Fabric. It's meant to run well on an ordinary PC, with a light shader on from the start so things look lovely straight away.
 
 ## What's inside
 
-- **Espresso Flavoured Core:** a safe home, builds that stay built, longer days, keep-your-hotbar deaths, and a whole little café (coffee you grow and brew, mugs, a barista, and more).
-- **Graves:** Universal Graves keeps everything else safe where you fell.
+- **Cozy Core:** builds that stay built (creepers and ghasts still hurt but break nothing, endermen leave your blocks alone, fire never eats a block, and no phantoms), the **Hearth Lantern** (a lantern with four amethyst shards; no monster spawns within 32 blocks of it, so a build site stays quiet at night), wood in the stonecutter at cheap rates, re-dyeing, a few hard-to-find blocks to craft, and builder trades. Every rule is an ordinary game rule, so a world can turn any of them back to vanilla.
+- **A gazebo at spawn:** [Spawn Gazebo](https://github.com/gabmaybelle/spawn-gazebo) builds a little gazebo with a starter chest where you first appear, and keeps the ground around it from being broken.
+- **Graves:** Universal Graves keeps everything safe where you fell.
 - **The world:** Terralith (with Lithostitched) and Towns and Towers, for more variety and more building blocks within reach.
 - **Finding your way:** Nature's Compass, Explorer's Compass, and Xaero's World Map and Minimap.
 - **A smoother start:** Chunky. In a new world, run `/chunky radius 500` and then `/chunky start`, and it builds the land around you ahead of time, so exploring near home has no world-generation hiccups.
 - **Decorating:** Beautify, Rechiseled, and Continuity for connected glass and bookshelves.
 - **Atmosphere:** Falling Leaves, Particle Rain, Visuality, AmbientSounds and BetterGrassify, plus, if you'd like it, the Fresh Animations resource pack so mobs blink, look around and move more naturally. Entity Model Features and Entity Texture Features, which it needs, are always installed, so you only have to tick Fresh Animations when you install, then switch it on under Options > Resource Packs.
-- **Quality of life:** [Nightfall Clock](https://github.com/gabmaybelle/nightfall-clock) (the day and time just above your hotbar, read from the sun so it stays right on the longer days, and "The sun's getting real low" at 6 PM), [Pocket List](https://github.com/gabmaybelle/pocket-list) (press K for a little checklist of what you're gathering; it sits bottom-right, counts as you collect, and can pin recipes from JEI), JEI, Jade, Durability Tooltip (how much life a tool has left, when you hover it), Nemo's Inventory Sorting (a sort button on chests and your inventory), Zoomify (hold C to zoom, scroll to zoom further), FallingTree, Trinkets Updated (slots for Espresso's café charms: right-click a charm to wear it), Mouse Tweaks, Controlling, Searchables and Mod Menu (set to count only the mods themselves, not the libraries and parts bundled inside them).
-- **Your settings stay yours:** the pack's starting settings (the shader, Mod Menu, FallingTree) are only put in place the first time, thanks to Your Options Shall Be Respected, so an update never resets anything you've changed. FallingTree fells a whole tree only when you crouch while chopping its trunk; a normal swing takes one log, so a stray click never brings down a log build. (With the Ember Glove on, a normal swing gives charcoal and a crouching one fells the tree for logs.)
+- **Quality of life:** [Nightfall Clock](https://github.com/gabmaybelle/nightfall-clock) (the day and time just above your hotbar, and "The sun's getting real low" at 6 PM), [Pocket List](https://github.com/gabmaybelle/pocket-list) (press K for a little checklist of what you're gathering; it sits bottom-right, counts as you collect, and can pin recipes from JEI), JEI, Jade, Durability Tooltip (how much life a tool has left, when you hover it), Nemo's Inventory Sorting (a sort button on chests and your inventory), Zoomify (hold C to zoom, scroll to zoom further), FallingTree, Mouse Tweaks, Controlling, Searchables and Mod Menu (set to count only the mods themselves, not the libraries and parts bundled inside them).
+- **Your settings stay yours:** the pack's starting settings (the shader, Mod Menu, FallingTree) are only put in place the first time, thanks to Your Options Shall Be Respected, so an update never resets anything you've changed. FallingTree fells a whole tree only when you crouch while chopping its trunk; a normal swing takes one log, so a stray click never brings down a log build.
 - **Performance:** Sodium, Lithium, FerriteCore, ModernFix, ImmediatelyFast, Entity Culling and Dynamic FPS, plus Iris with the MakeUp UltraFast shader, which is on from the first launch (it's a very light shader; switch it off under Options > Video Settings > Shader Packs if your PC struggles).
 - **Optional, for stronger PCs:** **Complementary Reimagined**, a richer shader with soft shadows and clouds. Tick it when you install, then pick it under Options > Video Settings > Shader Packs; MakeUp UltraFast stays the light default.
 
 ## Playing it
 
-Grab the `.mrpack` and import it into the Modrinth app (or Prism Launcher, ATLauncher or CurseForge). You'll need Minecraft 26.3; the launcher sorts out Fabric for you. A few parts are still in beta for 26.3 (JEI, Visuality and Fresh Animations), as many mods are this early in a version.
+Grab the `.mrpack` and import it into the Modrinth app (or Prism Launcher, ATLauncher or CurseForge). Coming from 0.3.0? Make a fresh instance: its worlds don't carry over, and if you update in place, delete `espresso-flavoured-core-0.3.0.jar` from `mods` yourself, since Cozy Core takes its place. You'll need Minecraft 26.3; the launcher sorts out Fabric for you. A few parts are still in beta for 26.3 (JEI, Visuality and Fresh Animations), as many mods are this early in a version.
 
 **Give it 4 GB of memory.** Launchers often start at 2 GB, which is just enough to get going but leaves little room: once you're exploring, the game keeps about 1 to 1.8 GB in use, so at 2 GB it's nearly full and stutters more as your world grows. In the Modrinth app it's under the instance's settings, then Java and memory. 3 GB is the least we'd use; a PC with 8 GB of RAM or more is comfortable.
 
@@ -34,13 +35,13 @@ If you'd rather set up a server folder yourself, `node install-server.js <folder
 
 A few things to know:
 
-- **The server's settings win.** Espresso's settings (safe home radius, longer days, tools per bundle and so on) come from the server's `config/espresso_flavoured.properties`, and players' bundles follow the server's "Tools per Bundle".
-- **Keep everyone on the same version.** Update the server and every player to the same pack version together, so their Espresso Flavoured matches. Like a player's game, the server keeps its own settings through updates: the pack's defaults only fill in files it doesn't have yet.
+- **The rules live in the world.** Cozy Core's rules and the Hearth Lantern's reach are game rules, saved with the world, so set them on the server with `/gamerule cozy_core:...` and everyone plays by the same ones. Spawn Gazebo's settings come from the server's `config/spawn_gazebo.properties`.
+- **Keep everyone on the same version.** Update the server and every player to the same pack version together, so their mods match. Like a player's game, the server keeps its own settings through updates: the pack's defaults only fill in files it doesn't have yet.
 - **Before you invite anyone:** new 26.3 servers have the whitelist turned on, and Terralith makes new chunks slow to generate, so pre-generating your world helps a lot (Chunky is in the pack for that).
 
 ## Building it yourself
 
-`node build-pack.js` reads `pack.json`, takes every mod (and what each one needs) from Modrinth at the exact version pinned in `pack.lock.json`, and writes the `.mrpack` to `dist/`, so the same pack version always builds the same pack. `node build-pack.js --outdated` lists mods with a newer 26.3 build, and `--update` takes them, rewrites the lock and lists what changed. `install-test.js` installs it into a test folder, and `scan-mixins.js` lists any mods that change the same parts of the game as Espresso Flavoured.
+`node build-pack.js` reads `pack.json`, takes every mod (and what each one needs) from Modrinth at the exact version pinned in `pack.lock.json`, and writes the `.mrpack` to `dist/`, so the same pack version always builds the same pack. `node build-pack.js --outdated` lists mods with a newer 26.3 build, and `--update` takes them, rewrites the lock and lists what changed. `install-test.js` installs it into a test folder, and `scan-mixins.js` lists any mods that change the same parts of the game as our own mods.
 
 ## Credits and licences
 

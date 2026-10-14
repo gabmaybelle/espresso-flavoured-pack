@@ -1,6 +1,6 @@
 {
 	"name": "Espresso Flavoured",
-	"version": "0.3.0",
+	"version": "0.4.0",
 	"summary": "A cozy, builder-friendly survival pack that runs on an everyday PC.",
 	"minecraft": "26.3",
 	"fabricLoader": "0.19.5",
@@ -16,7 +16,6 @@
 		"beautify-refabricated",
 		"rechiseled",
 		"mouse-tweaks",
-		"trinkets-updated",
 		"jei",
 		"jade",
 		"modmenu",
@@ -60,5 +59,10 @@
 	"exclude": [],
 	"serverRequired": [
 		"fabric-api"
+	],
+	"retired": [
+		"espresso-flavoured-core",
+		"espresso-flavoured",
+		"trinkets"
 	]
 }

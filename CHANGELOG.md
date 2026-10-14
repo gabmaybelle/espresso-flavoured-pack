@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.0
+
+- **Cozy Core takes over from Espresso Flavoured Core.** What builders felt stays and gets simpler: builds stay built (creepers and ghasts still hurt but break nothing, endermen leave blocks alone, fire never eats a block), no phantoms, cheap wood in the stonecutter, re-dyeing and builder trades, each as an ordinary game rule you can switch in the Game Rules screen. New: the **Hearth Lantern**, a lantern with four amethyst shards around it that keeps monsters from spawning within 32 blocks. Gone with Core: the café, Bean Coins, the charms, longer days, the keep-your-hotbar rule and the wellbeing effects; Universal Graves keeps everything where you fell. Worlds from 0.3.0 don't carry over; start a new one.
+- **Spawn Gazebo** is its own mod in the pack now (it used to ride inside Core), with its own starter chest.
+- **Trinkets Updated** removed: nothing in the pack uses it any more.
+
 ## 0.3.0
 
 - **Espresso Flavoured Core 0.3.0** (the mod is now called Core, with the mod ID `espresso_flavoured`): Bean Coins, café charms, the spawn gazebo, and the rest of its changelog. Worlds from 0.2.0 don't carry over; start a new one.

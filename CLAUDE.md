@@ -1,14 +1,16 @@
 # Espresso Flavoured (the modpack)
 
-The Modrinth modpack around Espresso Flavoured Core, for Minecraft 26.3 on Fabric. This repo is
+The Modrinth modpack around Cozy Core (with Spawn Gazebo, Nightfall Clock and Pocket List), for
+Minecraft 26.3 on Fabric. This repo is
 the pack list and the scripts that build the `.mrpack`; the mods themselves are downloaded from
 Modrinth. See README.md.
 
 ## Layout
 
 - `pack.json`: the mods, shaders and resource packs, and which are optional or needed on a
-  server. `pack.lock.json`: the exact version of every one.
-- `overrides/`: files every install gets: our own Core jar in `overrides/mods/`, and first-run
+  server; `retired` names our own former jars (by name up to the version) that the installers move
+  out of `mods/`. `pack.lock.json`: the exact version of every one.
+- `overrides/`: files every install gets: our own Cozy Core (Fabric) and Spawn Gazebo jars in `overrides/mods/`, and first-run
   settings under `overrides/config/yosbr/`. `client-overrides/`: players' games only (the
   Pocket List and Nightfall Clock jars).
 - `build-pack.js`, `install-test.js`, `install-server.js` (both built on `pack-files.js`: the zip

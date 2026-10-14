@@ -79,19 +79,24 @@ const sha1 = buf => crypto.createHash('sha1').update(buf).digest('hex');
 
 /**
  * Copies the pack's override folders (the given prefixes, such as overrides/ and client-overrides/)
- * into the install. Our own jar's file name changes between versions, and two Espresso jars can't
- * load together, so any older one in mods/ is moved into old-espresso-jars/ first (not deleted).
+ * into the install. Our own jars' file names change between versions, and two versions of a mod
+ * can't load together, so any other version of one of them in mods/ (the same name up to the
+ * version number) is moved into old-pack-files/ first (not deleted), and so is any version of a
+ * mod pack.json lists as "retired" (one the pack used to carry and has dropped).
  * Default settings under config/yosbr/ are also put in place where the install has no such file
  * yet, as the YOSBR mod does for players, so an update never resets anyone's own settings.
  */
 function applyOverrides(zip, dir, prefixes) {
 	const ours = [...zip.keys()].filter(n => prefixes.some(p => new RegExp(`^${p}mods/[^/]+$`).test(n))).map(n => n.split('/').pop());
+	const family = jar => jar.replace(/-?\d+\.\d+.*\.jar$/i, '').toLowerCase(); // "cozy-core-0.2.0-fabric.jar" -> "cozy-core"
+	// pack.json's "retired" names mods the pack used to carry as its own files and has dropped.
+	const families = [...ours.map(family), ...(require('./pack.json').retired || []).map(r => r.toLowerCase())];
 	const modsDir = path.join(dir, 'mods');
 	for (const jar of fs.existsSync(modsDir) ? fs.readdirSync(modsDir) : []) {
-		if (/^espresso-flavoured.*\.jar$/i.test(jar) && !ours.includes(jar)) {
-			fs.mkdirSync(path.join(dir, 'old-espresso-jars'), { recursive: true });
-			fs.renameSync(path.join(modsDir, jar), path.join(dir, 'old-espresso-jars', jar));
-			console.log(`moved the old ${jar} to old-espresso-jars/`);
+		if (/\.jar$/i.test(jar) && families.includes(family(jar)) && !ours.includes(jar)) {
+			fs.mkdirSync(path.join(dir, 'old-pack-files'), { recursive: true });
+			fs.renameSync(path.join(modsDir, jar), path.join(dir, 'old-pack-files', jar));
+			console.log(`moved the old ${jar} to old-pack-files/`);
 		}
 	}
 	for (const [name, read] of zip) {

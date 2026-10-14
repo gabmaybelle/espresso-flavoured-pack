@@ -1,6 +1,7 @@
 # Builds the .mrpack on every push and pull request, from the exact versions in pack.lock.json,
 # and checks the pack is whole: every mod in pack.json is pinned in the lock, and our own jars
-# (Core in overrides/mods, Pocket List and Nightfall Clock in client-overrides/mods) are there. The built pack is
+# (Cozy Core and Spawn Gazebo in overrides/mods, Pocket List and Nightfall Clock in
+# client-overrides/mods) are there. The built pack is
 # attached to each run under "Pack".
 
 name: build
@@ -27,10 +28,12 @@ jobs:
         run: git diff --exit-code pack.lock.json
       - name: our own jars are in the pack
         run: |
-          ls build/stage/overrides/mods/espresso-flavoured-core-*.jar
+          ls build/stage/overrides/mods/cozy-core-*-fabric.jar
+          ls build/stage/overrides/mods/spawn-gazebo-*.jar
           ls build/stage/client-overrides/mods/pocket-list-*.jar
           ls build/stage/client-overrides/mods/nightfallclock-*.jar
-          unzip -l dist/*.mrpack | grep -E 'overrides/mods/espresso-flavoured-core-.*\.jar'
+          unzip -l dist/*.mrpack | grep -E 'overrides/mods/cozy-core-.*-fabric\.jar'
+          unzip -l dist/*.mrpack | grep -E 'overrides/mods/spawn-gazebo-.*\.jar'
           unzip -l dist/*.mrpack | grep -E 'client-overrides/mods/pocket-list-.*\.jar'
           unzip -l dist/*.mrpack | grep -E 'client-overrides/mods/nightfallclock-.*\.jar'
       - name: capture the pack

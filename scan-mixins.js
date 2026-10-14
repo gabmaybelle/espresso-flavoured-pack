@@ -1,28 +1,17 @@
 // Lists every mixin in a mods folder (including jars nested inside jars) that targets one
-// of the Minecraft classes Espresso Flavoured hooks, so overlaps can be checked by hand.
+// of the Minecraft classes our own mods (Cozy Core, Spawn Gazebo) hook, so overlaps can be checked by hand.
 //   node scan-mixins.js <mods dir>
 const fs = require('fs'), path = require('path');
 const { readZipBuffer } = require('./pack-files');
 
 const TARGETS = [
-	'net/minecraft/world/entity/monster/Creeper',
-	'net/minecraft/world/entity/monster/Enderman$EndermanTakeBlockGoal',
-	'net/minecraft/world/level/levelgen/PhantomSpawner',
-	'net/minecraft/world/level/NaturalSpawner',
-	'net/minecraft/world/entity/npc/wanderingtrader/WanderingTrader',
-	'net/minecraft/world/item/component/BundleContents',
-	'net/minecraft/world/food/FoodData',
-	'net/minecraft/world/entity/Mob',
-	'net/minecraft/world/entity/MobCategory',
-	'net/minecraft/server/level/ServerChunkCache',
-	'net/minecraft/world/entity/player/Player',
-	'net/minecraft/client/player/LocalPlayer',
-	'net/minecraft/world/food/FoodProperties',
-	'net/minecraft/world/entity/LivingEntity',
-	'net/minecraft/world/entity/player/Inventory',
-	// The spawn gazebo's protection.
+	// Cozy Core's rules and the Hearth Lantern.
 	'net/minecraft/world/level/ServerExplosion',
+	'net/minecraft/world/entity/monster/Enderman$EndermanTakeBlockGoal',
 	'net/minecraft/world/level/block/FireBlock',
+	'net/minecraft/world/level/NaturalSpawner',
+	'net/minecraft/world/level/gamerules/GameRule',
+	// The spawn gazebo's protection.
 	'net/minecraft/world/level/block/piston/PistonBaseBlock',
 	'net/minecraft/world/item/BlockItem',
 	'net/minecraft/world/item/BucketItem',
