@@ -1,6 +1,6 @@
 # Builds the .mrpack on every push and pull request, from the exact versions in pack.lock.json,
 # and checks the pack is whole: every mod in pack.json is pinned in the lock, and our own jars
-# (Core in overrides/mods, Pocket List in client-overrides/mods) are there. The built pack is
+# (Core in overrides/mods, Pocket List and Nightfall Clock in client-overrides/mods) are there. The built pack is
 # attached to each run under "Pack".
 
 name: build
@@ -29,8 +29,10 @@ jobs:
         run: |
           ls build/stage/overrides/mods/espresso-flavoured-core-*.jar
           ls build/stage/client-overrides/mods/pocket-list-*.jar
+          ls build/stage/client-overrides/mods/nightfallclock-*.jar
           unzip -l dist/*.mrpack | grep -E 'overrides/mods/espresso-flavoured-core-.*\.jar'
           unzip -l dist/*.mrpack | grep -E 'client-overrides/mods/pocket-list-.*\.jar'
+          unzip -l dist/*.mrpack | grep -E 'client-overrides/mods/nightfallclock-.*\.jar'
       - name: capture the pack
         uses: actions/upload-artifact@v7
         with:

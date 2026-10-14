@@ -10,7 +10,7 @@ Modrinth. See README.md.
   server. `pack.lock.json`: the exact version of every one.
 - `overrides/`: files every install gets: our own Core jar in `overrides/mods/`, and first-run
   settings under `overrides/config/yosbr/`. `client-overrides/`: players' games only (the
-  Pocket List jar).
+  Pocket List and Nightfall Clock jars).
 - `build-pack.js`, `install-test.js`, `install-server.js` (both built on `pack-files.js`: the zip
   reader, the downloads with their manifest, the overrides), `scan-mixins.js`, `zip.js`.
 
