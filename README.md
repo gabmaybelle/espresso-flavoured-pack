@@ -6,7 +6,7 @@ A cozy, builder-friendly survival modpack for Minecraft 26.3 on Fabric. Your bui
 
 ## Getting started
 
-1. Download the `.mrpack` and import it into the Modrinth app, Prism Launcher, ATLauncher or CurseForge. The launcher sets up Minecraft 26.3 and Fabric for you.
+1. Download the `.mrpack` from the [Releases page](https://github.com/gabmaybelle/espresso-flavoured-pack/releases) and import it into the Modrinth app, Prism Launcher, ATLauncher or CurseForge. The launcher sets up Minecraft 26.3 and Fabric for you.
 2. **Give it 4 GB of memory** (3 GB at the least). Launchers often start at 2 GB, which stutters once you explore. In the Modrinth app it's in the instance's settings, under Java and memory.
 3. In a new world, run `/chunky radius 500` and then `/chunky start`. It builds the land around you ahead of time, so exploring near home runs smoothly.
 
