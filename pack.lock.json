@@ -271,5 +271,47 @@
 			"number": "2.17.0+mc26.3",
 			"type": "release"
 		}
+	},
+	"own": {
+		"cozy-core": {
+			"tag": "v0.3.0",
+			"asset": "cozy-core-0.3.0-fabric.jar",
+			"url": "https://github.com/gabmaybelle/cozy-core/releases/download/v0.3.0/cozy-core-0.3.0-fabric.jar",
+			"sha1": "2965dd3d6d32186a92661d140595249be962d9df",
+			"sha512": "90aecb078fa5fed99523b7c2463ca436c1f1f3139fe6fe0e6951013e6973db50ee1b02b5832af08a70c158100d89f472c839b76dd2ee205f389c3cb435c8f48c",
+			"size": 879587
+		},
+		"espresso-flavoured-core": {
+			"tag": "v0.4.0",
+			"asset": "espresso-flavoured-core-0.4.0.jar",
+			"url": "https://github.com/gabmaybelle/espresso-flavoured/releases/download/v0.4.0/espresso-flavoured-core-0.4.0.jar",
+			"sha1": "357ed6a76fa9848d2b0577644cdfb26f2a693ef3",
+			"sha512": "81def1c1898aa23a46ce7529fcb2abc1f70ed7a7f1e0df4373a0916e2b08ba599a6d6e39c35d4f26d0488539b0577f99b092ad985c37a6cc4db4f160b7b97ff4",
+			"size": 752447
+		},
+		"spawn-gazebo": {
+			"tag": "v1.1.1",
+			"asset": "spawn-gazebo-1.1.1.jar",
+			"url": "https://github.com/gabmaybelle/spawn-gazebo/releases/download/v1.1.1/spawn-gazebo-1.1.1.jar",
+			"sha1": "cca744a096426c999142b94264e54a99d66d395a",
+			"sha512": "50b9bfedc35e1ca1f21c901d3c05f88fd25b38ac916045621af22f517a5cd7490c75e307a414d305940a375ba8f5e09c05ae0928189610ea7a21a0046dac33bd",
+			"size": 349481
+		},
+		"pocket-list": {
+			"tag": "v0.1.0",
+			"asset": "pocket-list-0.1.0.jar",
+			"url": "https://github.com/gabmaybelle/pocket-list/releases/download/v0.1.0/pocket-list-0.1.0.jar",
+			"sha1": "c9c901f74a6e83230c92f2722303c6e635d8993c",
+			"sha512": "d7303ac53c83086d0c4ec5f73f1059eaba96614371605b4f0e093cf0172ff5bfbc52836fb24fe6363c882c30f9ac1334b3c6a6a7e3e501a14f9127315fe76a62",
+			"size": 88916
+		},
+		"nightfall-clock": {
+			"tag": "v0.2.1",
+			"asset": "nightfallclock-0.2.1.jar",
+			"url": "https://github.com/gabmaybelle/nightfall-clock/releases/download/v0.2.1/nightfallclock-0.2.1.jar",
+			"sha1": "556792fa739339c252b357e13265f2720d2cadb7",
+			"sha512": "aa42899634c8c7cff0e0d44af911e823481d6055469540158a70816a4af99febcf27829184f7cf657cd42fb31d266de8f2e85090b7fb6bbe219d51f5a636a2e2",
+			"size": 26027
+		}
 	}
 }

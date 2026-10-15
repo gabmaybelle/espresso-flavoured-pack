@@ -1,7 +1,7 @@
 # Builds the .mrpack on every push and pull request, from the exact versions in pack.lock.json,
-# and checks the pack is whole: every mod in pack.json is pinned in the lock, and our own jars
-# (Cozy Core, Espresso Flavoured Core and Spawn Gazebo in overrides/mods, Pocket List and Nightfall Clock in
-# client-overrides/mods) are there. The built pack is
+# and checks the pack is whole: every mod in pack.json is pinned in the lock, and our own mods
+# (Cozy Core, Espresso Flavoured Core, Spawn Gazebo, Pocket List and Nightfall Clock, from their
+# GitHub releases) are listed and their download links still work. The built pack is
 # attached to each run under "Pack".
 
 name: build
@@ -26,18 +26,15 @@ jobs:
         # Building from the lock leaves it as it was; a change means pack.json has a mod (or a
         # dependency) that isn't pinned yet. Run `node build-pack.js` locally and commit the lock.
         run: git diff --exit-code pack.lock.json
-      - name: our own jars are in the pack
+      - name: our own mods are in the pack and their releases still download
         run: |
-          ls build/stage/overrides/mods/cozy-core-*-fabric.jar
-          ls build/stage/overrides/mods/spawn-gazebo-*.jar
-          ls build/stage/overrides/mods/espresso-flavoured-core-*.jar
-          ls build/stage/client-overrides/mods/pocket-list-*.jar
-          ls build/stage/client-overrides/mods/nightfallclock-*.jar
-          unzip -l dist/*.mrpack | grep -E 'overrides/mods/cozy-core-.*-fabric\.jar'
-          unzip -l dist/*.mrpack | grep -E 'overrides/mods/spawn-gazebo-.*\.jar'
-          unzip -l dist/*.mrpack | grep -E 'overrides/mods/espresso-flavoured-core-.*\.jar'
-          unzip -l dist/*.mrpack | grep -E 'client-overrides/mods/pocket-list-.*\.jar'
-          unzip -l dist/*.mrpack | grep -E 'client-overrides/mods/nightfallclock-.*\.jar'
+          unzip -p dist/*.mrpack modrinth.index.json > index.json
+          for f in 'cozy-core-.*-fabric\.jar' 'espresso-flavoured-core-.*\.jar' 'spawn-gazebo-.*\.jar'                    'pocket-list-.*\.jar' 'nightfallclock-.*\.jar'; do
+            grep -qE "\"path\": \"mods/$f\"" index.json || { echo "missing from the pack: $f"; exit 1; }
+          done
+          for url in $(grep -oE 'https://github.com/gabmaybelle/[^"]+' index.json); do
+            curl -fsIL -o /dev/null "$url" || { echo "release download failed: $url"; exit 1; }
+          done
       - name: capture the pack
         uses: actions/upload-artifact@v7
         with:

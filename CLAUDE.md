@@ -12,10 +12,13 @@ it first, and add this session's row before ending.
 
 - `pack.json`: the mods, shaders and resource packs, and which are optional or needed on a
   server; `retired` names our own former jars (by name up to the version) that the installers move
-  out of `mods/`. `pack.lock.json`: the exact version of every one.
-- `overrides/`: files every install gets: our own Cozy Core (Fabric), Espresso Flavoured Core and Spawn Gazebo jars in `overrides/mods/` (Core also carries the same Spawn Gazebo inside it; keep the two versions equal), and first-run
-  settings under `overrides/config/yosbr/`. `client-overrides/`: players' games only (the
-  Pocket List and Nightfall Clock jars).
+  out of `mods/`; `ownMods` lists our own mods (Cozy Core, Espresso Flavoured Core, Spawn Gazebo,
+  Pocket List, Nightfall Clock) by GitHub repo, release tag and jar name, with `side` "client" for
+  the two that stay off servers. `pack.lock.json`: the exact version of every one, plus each own
+  mod's download link, hashes and size.
+- `overrides/`: files every install gets: first-run settings under `overrides/config/yosbr/`. No
+  jars are kept in this repo. (Espresso Flavoured Core also carries a Spawn Gazebo inside it; keep
+  the two versions equal.)
 - `build-pack.js`, `install-test.js`, `install-server.js` (both built on `pack-files.js`: the zip
   reader, the downloads with their manifest, the overrides), `scan-mixins.js`, `zip.js`.
 
@@ -25,13 +28,15 @@ it first, and add this session's row before ending.
   newer builds; `--update` takes them and rewrites the lock.
 - `node install-test.js test-instance`: installs the pack like a launcher would, for a test game.
 - CI builds the pack from the lock on every push and checks every mod is pinned and our own
-  jars are inside. It can't play the pack: test a change by installing it and opening a new world.
+  mods are listed with working release links. It can't play the pack: test a change by installing it and opening a new world.
 
 ## Gotchas
 
-- **The jars in `overrides/mods/` and `client-overrides/mods/` are built from the mods' own
-  repos.** Build them from a clean, committed `main` of that repo and say which commit in the
-  commit message.
+- **Our own mods come from GitHub releases.** To update one: release it from a clean, committed
+  `main` of its repo, change its `tag` and `asset` in `pack.json`'s `ownMods`, run
+  `node build-pack.js` (it downloads and hashes the jar) and commit the lock. Current: cozy-core
+  v0.3.0, espresso-flavoured-core v0.4.0, spawn-gazebo v1.1.1, pocket-list v0.1.0,
+  nightfall-clock v0.2.1. Deleting or renaming a release breaks the build, and CI checks every link.
 - The default shader is switched on by file name in `overrides/config/yosbr/config/iris.properties`;
   `build-pack.js` stops if an update renames it.
 - Licence: this repo is CC BY-NC-SA 4.0. Every mod keeps its own licence.

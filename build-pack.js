@@ -9,8 +9,13 @@
 //
 // A mod new to pack.json (or a new dependency) gets its newest build and joins the lock.
 //
+// Our own mods (pack.json "ownMods") come from their GitHub releases, not from this repo: each
+// names a repo, a tag and a jar. The first build hashes the download and pins it in the lock; the
+// pack lists it like any other file, so installers check the hash. Release a new version of one of
+// our mods, change its tag and jar name in pack.json, and build.
+//
 // Requires Node 22+ (fetch).
-const fs = require('fs'), path = require('path');
+const fs = require('fs'), path = require('path'), crypto = require('crypto');
 
 const ROOT = __dirname;
 const pack = JSON.parse(fs.readFileSync(path.join(ROOT, 'pack.json'), 'utf8'));
@@ -22,7 +27,20 @@ const api = p => fetch('https://api.modrinth.com/v2' + p, { headers: UA }).then(
 const RANK = { release: 0, beta: 1, alpha: 2 };
 const UPDATE = process.argv.includes('--update'), OUTDATED = process.argv.includes('--outdated');
 const LOCK = path.join(ROOT, 'pack.lock.json');
-const pinned = fs.existsSync(LOCK) ? JSON.parse(fs.readFileSync(LOCK, 'utf8')).projects : {};
+const lockFile = fs.existsSync(LOCK) ? JSON.parse(fs.readFileSync(LOCK, 'utf8')) : {};
+const pinned = lockFile.projects || {}, pinnedOwn = lockFile.own || {};
+
+/** One of our own mods from its GitHub release: the pin in the lock if tag and jar are unchanged, else downloaded and hashed. */
+async function ownFile(mod) {
+	const pin = pinnedOwn[mod.slug];
+	if (pin && pin.tag === mod.tag && pin.asset === mod.asset) return pin;
+	const url = `https://github.com/${mod.repo}/releases/download/${mod.tag}/${encodeURIComponent(mod.asset)}`;
+	const res = await fetch(url, { headers: UA });
+	if (!res.ok) throw new Error(`${res.status} ${url}`);
+	const body = Buffer.from(await res.arrayBuffer());
+	const hash = algorithm => crypto.createHash(algorithm).update(body).digest('hex');
+	return { tag: mod.tag, asset: mod.asset, url, sha1: hash('sha1'), sha512: hash('sha512'), size: body.length };
+}
 
 async function newestVersion(id, loader = 'fabric') {
 	const q = `?loaders=${encodeURIComponent(JSON.stringify([loader]))}&game_versions=${encodeURIComponent(JSON.stringify([pack.minecraft]))}`;
@@ -117,6 +135,18 @@ async function pickVersion(project, loader = 'fabric') {
 		});
 		chosen.set(project.id, { project, version, reason, loader });
 	}
+	// Our own mods, from their GitHub releases. side "client" keeps one off servers (Pocket List).
+	const ownLock = {};
+	for (const mod of pack.ownMods || []) {
+		const own = ownLock[mod.slug] = await ownFile(mod);
+		files.push({
+			path: `mods/${own.asset}`,
+			hashes: { sha1: own.sha1, sha512: own.sha512 },
+			env: { client: 'required', server: mod.side === 'client' ? 'unsupported' : 'required' },
+			downloads: [own.url],
+			fileSize: own.size,
+		});
+	}
 	files.sort((a, b) => a.path.localeCompare(b.path));
 
 	if (OUTDATED) {
@@ -149,13 +179,19 @@ async function pickVersion(project, loader = 'fabric') {
 	for (const { project, version } of [...chosen.values()].sort((a, b) => a.project.slug.localeCompare(b.project.slug))) {
 		lock[project.slug] = { version: version.id, number: version.version_number, type: version.version_type };
 	}
-	fs.writeFileSync(LOCK, JSON.stringify({ minecraft: pack.minecraft, projects: lock }, null, '\t') + '\n');
+	fs.writeFileSync(LOCK, JSON.stringify({ minecraft: pack.minecraft, projects: lock, own: ownLock }, null, '\t') + '\n');
 	const changes = [];
 	for (const slug of new Set([...Object.keys(pinned), ...Object.keys(lock)])) {
 		const was = pinned[slug], now = lock[slug];
 		if (!was) changes.push(`+ ${slug} ${now.number}`);
 		else if (!now) changes.push(`- ${slug} ${was.number}`);
 		else if (was.version !== now.version) changes.push(`  ${slug} ${was.number} -> ${now.number}`);
+	}
+	for (const slug of new Set([...Object.keys(pinnedOwn), ...Object.keys(ownLock)])) {
+		const was = pinnedOwn[slug], now = ownLock[slug];
+		if (!was) changes.push(`+ ${slug} ${now.tag} (own)`);
+		else if (!now) changes.push(`- ${slug} ${was.tag} (own)`);
+		else if (was.tag !== now.tag || was.asset !== now.asset) changes.push(`  ${slug} ${was.tag} -> ${now.tag} (own)`);
 	}
 	if (changes.length) console.log(`pack.lock.json changed:\n${changes.sort().join('\n')}\n`);
 
@@ -186,6 +222,7 @@ async function pickVersion(project, loader = 'fabric') {
 	// Human-readable summary
 	const rows = [...chosen.values()].map(({ project, version, reason }) =>
 		`${project.title} ${version.version_number} [${version.version_type}]${reason === 'listed' ? '' : ` (${reason})`}`);
+	for (const mod of pack.ownMods || []) rows.push(`${mod.slug} ${mod.tag} (our own, GitHub release)`);
 	rows.sort((a, b) => a.localeCompare(b));
 	fs.writeFileSync(path.join(ROOT, 'dist', 'mods.txt'), rows.join('\n') + '\n');
 	console.log(rows.join('\n'));

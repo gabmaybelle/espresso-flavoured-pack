@@ -63,5 +63,12 @@
 	],
 	"retired": [
 		"espresso-flavoured"
+	],
+	"ownMods": [
+		{ "slug": "cozy-core", "repo": "gabmaybelle/cozy-core", "tag": "v0.3.0", "asset": "cozy-core-0.3.0-fabric.jar", "side": "both" },
+		{ "slug": "espresso-flavoured-core", "repo": "gabmaybelle/espresso-flavoured", "tag": "v0.4.0", "asset": "espresso-flavoured-core-0.4.0.jar", "side": "both" },
+		{ "slug": "spawn-gazebo", "repo": "gabmaybelle/spawn-gazebo", "tag": "v1.1.1", "asset": "spawn-gazebo-1.1.1.jar", "side": "both" },
+		{ "slug": "pocket-list", "repo": "gabmaybelle/pocket-list", "tag": "v0.1.0", "asset": "pocket-list-0.1.0.jar", "side": "client" },
+		{ "slug": "nightfall-clock", "repo": "gabmaybelle/nightfall-clock", "tag": "v0.2.1", "asset": "nightfallclock-0.2.1.jar", "side": "client" }
 	]
 }

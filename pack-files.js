@@ -90,10 +90,13 @@ function applyOverrides(zip, dir, prefixes) {
 	const ours = [...zip.keys()].filter(n => prefixes.some(p => new RegExp(`^${p}mods/[^/]+$`).test(n))).map(n => n.split('/').pop());
 	const family = jar => jar.replace(/-?\d+\.\d+.*\.jar$/i, '').toLowerCase(); // "cozy-core-0.2.0-fabric.jar" -> "cozy-core"
 	// pack.json's "retired" names mods the pack used to carry as its own files and has dropped.
-	const families = [...ours.map(family), ...(require('./pack.json').retired || []).map(r => r.toLowerCase())];
+	// pack.json's "ownMods" are listed in the pack's file list, so installFiles has put them in mods/ already.
+	const indexed = new Set(packIndex(zip).files.map(f => f.path.split('/').pop()));
+	const families = [...ours.map(family), ...(require('./pack.json').ownMods || []).map(m => family(m.asset)),
+		...(require('./pack.json').retired || []).map(r => r.toLowerCase())];
 	const modsDir = path.join(dir, 'mods');
 	for (const jar of fs.existsSync(modsDir) ? fs.readdirSync(modsDir) : []) {
-		if (/\.jar$/i.test(jar) && families.includes(family(jar)) && !ours.includes(jar)) {
+		if (/\.jar$/i.test(jar) && families.includes(family(jar)) && !ours.includes(jar) && !indexed.has(jar)) {
 			fs.mkdirSync(path.join(dir, 'old-pack-files'), { recursive: true });
 			fs.renameSync(path.join(modsDir, jar), path.join(dir, 'old-pack-files', jar));
 			console.log(`moved the old ${jar} to old-pack-files/`);
