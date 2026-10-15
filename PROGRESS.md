@@ -14,6 +14,7 @@ which checks fail, code put back), what was learned, and what was deliberately n
 
 | Date | Session | What happened |
 | --- | --- | --- |
+| 2026-10-15 | Pocket List jar | Pocket List jar rebuilt from a clean, committed `main` of pocket-list (be5ed55: shelves, Espresso Flavoured canisters and jars count toward the list once you've used them, through Fabric's item storage). Jar SHA-256 starts 0B8F7A01. `node build-pack.js` passed: 53 mods, `dist/Espresso Flavoured-0.4.0.mrpack`. The mod's own game test and proof run were done in its repo; the pack was not opened in a game here. |
 | 2026-10-15 | Map | The one-job-per-mod map (Cozy Core: builder rules; Espresso Flavoured Core: the café; Spawn Gazebo, Nightfall Clock, Pocket List: one thing each; the pack: the bundle) written into CLAUDE.md, the same in every repo. No code change. |
 | 2026-10-15 | Notes | `PROGRESS.md` added, with the rows below reconstructed from the commit history (one row per day, the commits' own words); the two shared rules (commits one at a time by hand, proof runs for data changes) added to `CLAUDE.md`. No code change. |
 | 2026-10-14 | (from history) | Cozy Core takes over from Espresso Flavoured Core; Fresh Espresso Core and Pocket List jars; Nightfall Clock joins the pack; Core without its own clock; Core jar with sitting-with-a-tool, and one set of install scripts. |
