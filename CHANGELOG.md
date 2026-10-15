@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.5.1
+
+- **Our own five mods are now downloaded from their GitHub releases**, each pinned by version and file hash, instead of being packed inside the pack file. The pack file is about 10 KB instead of 1.4 MB, and every launcher that imports `.mrpack` files, Modrinth included, can take it. The mods themselves are the same as in 0.5.0, except that Pocket List carries its new pinned-checklist icon.
+
 ## 0.5.0
 
 - **The café is back.** Espresso Flavoured Core 0.4.0 returns as the pack's café: coffee you grow and brew, mugs you shape and dye, baristas and village cafés, Bean Coins and eight café charms. It no longer does any of Cozy Core's jobs, so the two sit side by side. With it come longer days (20 minutes of daylight, 10 of night), slightly tougher nights, healing only when you've eaten, Drowsy after three days away from your home bed, roomier bundles and the block merchant. Each can be switched off in its settings (Mod Menu).

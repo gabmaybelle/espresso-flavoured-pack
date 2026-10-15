@@ -6,9 +6,9 @@ which checks fail, code put back), what was learned, and what was deliberately n
 
 ## Where things stand
 
-- **Done:** Espresso Flavoured 0.5.0: a cozy, builder-friendly survival pack on Fabric 26.3 around Cozy Core 0.3.0 and Espresso Flavoured Core 0.4.0 (the café, back), with Spawn Gazebo, Nightfall Clock, Pocket List and the rest pinned by version; CI builds the pack from the lock on every push and checks every mod is pinned and our own jars are inside.
+- **Done:** Espresso Flavoured 0.5.1 (0.5.0 with our own five mods downloaded from their GitHub releases instead of packed inside): a cozy, builder-friendly survival pack on Fabric 26.3 around Cozy Core 0.3.0 and Espresso Flavoured Core 0.4.0 (the café, back), with Spawn Gazebo, Nightfall Clock, Pocket List and the rest pinned by version; CI builds the pack from the lock on every push and checks every mod is pinned and every release link works.
 - **Broken:** Nothing known as of this writing (not re-verified).
-- **Next:** Keep the bundled jars built from clean, committed `main`s of their repos, naming the commit; refresh them when those mods release.
+- **Next:** Refresh the own-mod pins in `pack.lock.json` when those mods release.
 
 ## Log
 
