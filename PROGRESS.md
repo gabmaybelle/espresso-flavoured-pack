@@ -14,6 +14,7 @@ which checks fail, code put back), what was learned, and what was deliberately n
 
 | Date | Session | What happened |
 | --- | --- | --- |
+| 2026-10-15 | Map | The one-job-per-mod map (Cozy Core: builder rules; Espresso Flavoured Core: the café; Spawn Gazebo, Nightfall Clock, Pocket List: one thing each; the pack: the bundle) written into CLAUDE.md, the same in every repo. No code change. |
 | 2026-10-15 | Notes | `PROGRESS.md` added, with the rows below reconstructed from the commit history (one row per day, the commits' own words); the two shared rules (commits one at a time by hand, proof runs for data changes) added to `CLAUDE.md`. No code change. |
 | 2026-10-14 | (from history) | Cozy Core takes over from Espresso Flavoured Core; Fresh Espresso Core and Pocket List jars; Nightfall Clock joins the pack; Core without its own clock; Core jar with sitting-with-a-tool, and one set of install scripts. |
 | 2026-10-13 | (from history) | Core jar with Spawn Gazebo bundled inside it; Zip files get a valid date (1980-01-01) instead of month 0, which some tools rejected; JEI 31.12 and Lithostitched 2.0.6; installers replace old versions; Refresh Core and Pocket List: safer settings and safe list saving; CI builds the pack on every push; Notes for Claude: how this repo works and the rules every session follows; Refresh the Core jar: the round gazebo, river plant fixes and lava-free spawn; Rebuild: river moss scaled back; Rebuild: river banks no longer litter. |
