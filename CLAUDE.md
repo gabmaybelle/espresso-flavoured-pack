@@ -1,6 +1,6 @@
 # Espresso Flavoured (the modpack)
 
-The Modrinth modpack around Cozy Core (with Spawn Gazebo, Nightfall Clock and Pocket List), for
+The Modrinth modpack around Cozy Core and Espresso Flavoured Core (with Spawn Gazebo, Nightfall Clock and Pocket List), for
 Minecraft 26.3 on Fabric. This repo is
 the pack list and the scripts that build the `.mrpack`; the mods themselves are downloaded from
 Modrinth. See README.md.
@@ -13,7 +13,7 @@ it first, and add this session's row before ending.
 - `pack.json`: the mods, shaders and resource packs, and which are optional or needed on a
   server; `retired` names our own former jars (by name up to the version) that the installers move
   out of `mods/`. `pack.lock.json`: the exact version of every one.
-- `overrides/`: files every install gets: our own Cozy Core (Fabric) and Spawn Gazebo jars in `overrides/mods/`, and first-run
+- `overrides/`: files every install gets: our own Cozy Core (Fabric), Espresso Flavoured Core and Spawn Gazebo jars in `overrides/mods/` (Core also carries the same Spawn Gazebo inside it; keep the two versions equal), and first-run
   settings under `overrides/config/yosbr/`. `client-overrides/`: players' games only (the
   Pocket List and Nightfall Clock jars).
 - `build-pack.js`, `install-test.js`, `install-server.js` (both built on `pack-files.js`: the zip
@@ -46,13 +46,13 @@ One job per mod, decided 2026-10-15, so nothing is done twice and each repo tell
   data pack of the recipes.
 - **Espresso Flavoured Core** (espresso-flavoured): the café: coffee you grow and brew, mugs,
   baristas, Bean Coins, the café charms, and Drowsy (coffee's reason to exist). Longer days stay a
-  Core setting for now. The survival rules Cozy Core now covers leave Core in 0.4.0 (its PLAN-0.4.0.md).
+  Core setting for now. The survival rules Cozy Core now covers left Core in 0.4.0 (its PLAN-0.4.0.md).
 - **Spawn Gazebo** (spawn-gazebo): the gazebo at the world spawn and its starter chest.
 - **Nightfall Clock** (nightfall-clock): the clock above the hotbar and the dusk warning.
 - **Pocket List** (pocket-list): the gathering checklist.
 - **Espresso Flavoured** (espresso-flavoured-pack): the modpack that puts them together. Since
-  2026-10-14 it carries Cozy Core, Spawn Gazebo, Nightfall Clock and Pocket List, not Espresso
-  Flavoured Core.
+  pack 0.5.0 (2026-10-15) it carries all five: Cozy Core, Espresso Flavoured Core (back as the café
+  once it stopped doing Cozy Core's jobs), Spawn Gazebo, Nightfall Clock and Pocket List.
 
 A new feature goes in the mod whose job it is. If none fits, ask Gabby before adding it anywhere.
 

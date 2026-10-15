@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.5.0
+
+- **The café is back.** Espresso Flavoured Core 0.4.0 returns as the pack's café: coffee you grow and brew, mugs you shape and dye, baristas and village cafés, Bean Coins and eight café charms. It no longer does any of Cozy Core's jobs, so the two sit side by side. With it come longer days (20 minutes of daylight, 10 of night), slightly tougher nights, healing only when you've eaten, Drowsy after three days away from your home bed, roomier bundles and the block merchant. Each can be switched off in its settings (Mod Menu).
+- **Keep your hotbar when you die.** Cozy Core 0.3.0's new rule: your hotbar, armour and off-hand stay with you, and Universal Graves keeps the rest where you fell.
+- **Trinkets Updated is back**, so café charms go in their own slots (right-click one to wear it) instead of the off-hand, and stay with you when you die.
+- Worlds from 0.4.0 carry over: the café's coffee bushes and village cafés only appear in land you haven't explored yet.
+
 ## 0.4.0
 
 - **Cozy Core takes over from Espresso Flavoured Core.** What builders felt stays and gets simpler: builds stay built (creepers and ghasts still hurt but break nothing, endermen leave blocks alone, fire never eats a block), no phantoms, cheap wood in the stonecutter, re-dyeing and builder trades, each as an ordinary game rule you can switch in the Game Rules screen. New: the **Hearth Lantern**, a lantern with four amethyst shards around it that keeps monsters from spawning within 32 blocks. Gone with Core: the café, Bean Coins, the charms, longer days, the keep-your-hotbar rule and the wellbeing effects; Universal Graves keeps everything where you fell. Worlds from 0.3.0 don't carry over; start a new one.

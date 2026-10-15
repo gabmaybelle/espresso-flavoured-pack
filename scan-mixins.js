@@ -1,5 +1,5 @@
 // Lists every mixin in a mods folder (including jars nested inside jars) that targets one
-// of the Minecraft classes our own mods (Cozy Core, Spawn Gazebo) hook, so overlaps can be checked by hand.
+// of the Minecraft classes our own mods (Cozy Core, Espresso Flavoured Core, Spawn Gazebo) hook, so overlaps can be checked by hand.
 //   node scan-mixins.js <mods dir>
 const fs = require('fs'), path = require('path');
 const { readZipBuffer } = require('./pack-files');
@@ -11,6 +11,22 @@ const TARGETS = [
 	'net/minecraft/world/level/block/FireBlock',
 	'net/minecraft/world/level/NaturalSpawner',
 	'net/minecraft/world/level/gamerules/GameRule',
+	// Cozy Core's keep-your-hotbar rule (Espresso Flavoured Core's charm-keeping hooks LivingEntity too).
+	'net/minecraft/world/entity/LivingEntity',
+	'net/minecraft/server/level/ServerPlayer',
+	// Espresso Flavoured Core: the café, Drowsy, longer days and its other rules.
+	'net/minecraft/client/player/LocalPlayer',
+	'net/minecraft/core/component/BlockTransformer',
+	'net/minecraft/world/entity/Mob',
+	'net/minecraft/world/entity/npc/villager/AbstractVillager',
+	'net/minecraft/world/entity/npc/wanderingtrader/WanderingTrader',
+	'net/minecraft/world/food/FoodData',
+	'net/minecraft/world/food/FoodProperties',
+	'net/minecraft/world/item/component/BundleContents',
+	'net/minecraft/world/level/NaturalSpawner$SpawnState',
+	'net/minecraft/world/level/block/CakeBlock',
+	'net/minecraft/world/level/block/PowderSnowBlock',
+	'net/minecraft/world/level/block/SugarCaneBlock',
 	// The spawn gazebo's protection.
 	'net/minecraft/world/level/block/piston/PistonBaseBlock',
 	'net/minecraft/world/item/BlockItem',

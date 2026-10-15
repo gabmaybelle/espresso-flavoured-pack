@@ -2,7 +2,7 @@
 
 *A shot of espresso for your survival world: less stress, less grind, more building.*
 
-A cozy, builder-friendly survival modpack for Minecraft 26.3 on Fabric. Your builds stay safe, decorating is easier, and the world looks lovely from the first launch. It's made to run well on an ordinary PC.
+A cozy, builder-friendly survival modpack for Minecraft 26.3 on Fabric. Your builds stay safe, decorating is easier, there's a café to run, and the world looks lovely from the first launch. It's made to run well on an ordinary PC.
 
 ## Getting started
 
@@ -17,9 +17,12 @@ A cozy, builder-friendly survival modpack for Minecraft 26.3 on Fabric. Your bui
 - Beautify and Rechiseled for more to build with, and Continuity for connected glass.
 - FallingTree: crouch while chopping a trunk to fell the whole tree. A normal swing takes one log, so log builds are safe.
 
+**The café**
+- [Espresso Flavoured Core](https://github.com/gabmaybelle/espresso-flavoured): coffee you grow and brew, mugs you shape and dye, baristas, Bean Coins and café charms you wear in their own slots (Trinkets Updated). Days are longer, and three days away from your home bed makes you Drowsy until you sleep there; coffee holds it off.
+
 **Starting out**
 - [Spawn Gazebo](https://github.com/gabmaybelle/spawn-gazebo): you start in a little gazebo with a starter chest.
-- Universal Graves: when you die, everything you didn't keep waits in a grave where you fell.
+- Universal Graves: when you die, everything you didn't keep (your hotbar, armour and worn charms stay with you) waits in a grave where you fell.
 
 **The world**
 - Terralith and Towns and Towers, for more varied land and villages.
@@ -45,9 +48,9 @@ Most server hosts can install a `.mrpack` for you; look for a Modrinth or "impor
 - Cozy Core's rules are game rules saved with the world: set them with `/gamerule cozy_core:...`.
 - Pre-generate the world with Chunky before inviting people, since new land is slow to generate. New 26.3 servers have the whitelist on.
 
-## Upgrading from 0.3.0
+## Upgrading
 
-Start a fresh instance: 0.3.0 worlds don't carry over. If you update in place, delete `espresso-flavoured-core-0.3.0.jar` from your `mods` folder, since Cozy Core takes its place.
+From 0.4.0, worlds carry over; the café appears in land you haven't explored yet. From 0.3.0, start a fresh instance, since those worlds don't carry over.
 
 ## Building it yourself
 
