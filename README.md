@@ -2,46 +2,56 @@
 
 *A shot of espresso for your survival world: less stress, less grind, more building.*
 
-This is the modpack around [Cozy Core](https://github.com/gabmaybelle/cozy-core): a cozy, builder-friendly survival setup for Minecraft 26.3 on Fabric. It's meant to run well on an ordinary PC, with a light shader on from the start so things look lovely straight away.
+A cozy, builder-friendly survival modpack for Minecraft 26.3 on Fabric. Your builds stay safe, decorating is easier, and the world looks lovely from the first launch. It's made to run well on an ordinary PC.
+
+## Getting started
+
+1. Download the `.mrpack` and import it into the Modrinth app, Prism Launcher, ATLauncher or CurseForge. The launcher sets up Minecraft 26.3 and Fabric for you.
+2. **Give it 4 GB of memory** (3 GB at the least). Launchers often start at 2 GB, which stutters once you explore. In the Modrinth app it's in the instance's settings, under Java and memory.
+3. In a new world, run `/chunky radius 500` and then `/chunky start`. It builds the land around you ahead of time, so exploring near home runs smoothly.
 
 ## What's inside
 
-- **Cozy Core:** builds that stay built (creepers and ghasts still hurt but break nothing, endermen leave your blocks alone, fire never eats a block, and no phantoms), the **Hearth Lantern** (a lantern with four amethyst shards; no monster spawns within 32 blocks of it, so a build site stays quiet at night), wood in the stonecutter at cheap rates, re-dyeing, a few hard-to-find blocks to craft, and builder trades. Every rule is an ordinary game rule, so a world can turn any of them back to vanilla.
-- **A gazebo at spawn:** [Spawn Gazebo](https://github.com/gabmaybelle/spawn-gazebo) builds a little gazebo with a starter chest where you first appear, and keeps the ground around it from being broken.
-- **Graves:** Universal Graves keeps everything safe where you fell.
-- **The world:** Terralith (with Lithostitched) and Towns and Towers, for more variety and more building blocks within reach.
-- **Finding your way:** Nature's Compass, Explorer's Compass, and Xaero's World Map and Minimap.
-- **A smoother start:** Chunky. In a new world, run `/chunky radius 500` and then `/chunky start`, and it builds the land around you ahead of time, so exploring near home has no world-generation hiccups.
-- **Decorating:** Beautify, Rechiseled, and Continuity for connected glass and bookshelves.
-- **Atmosphere:** Falling Leaves, Particle Rain, Visuality, AmbientSounds and BetterGrassify, plus, if you'd like it, the Fresh Animations resource pack so mobs blink, look around and move more naturally. Entity Model Features and Entity Texture Features, which it needs, are always installed, so you only have to tick Fresh Animations when you install, then switch it on under Options > Resource Packs.
-- **Quality of life:** [Nightfall Clock](https://github.com/gabmaybelle/nightfall-clock) (the day and time just above your hotbar, and "The sun's getting real low" at 6 PM), [Pocket List](https://github.com/gabmaybelle/pocket-list) (press K for a little checklist of what you're gathering; it sits bottom-right, counts as you collect, and can pin recipes from JEI), JEI, Jade, Durability Tooltip (how much life a tool has left, when you hover it), Nemo's Inventory Sorting (a sort button on chests and your inventory), Zoomify (hold C to zoom, scroll to zoom further), FallingTree, Mouse Tweaks, Controlling, Searchables and Mod Menu (set to count only the mods themselves, not the libraries and parts bundled inside them).
-- **Your settings stay yours:** the pack's starting settings (the shader, Mod Menu, FallingTree) are only put in place the first time, thanks to Your Options Shall Be Respected, so an update never resets anything you've changed. FallingTree fells a whole tree only when you crouch while chopping its trunk; a normal swing takes one log, so a stray click never brings down a log build.
-- **Performance:** Sodium, Lithium, FerriteCore, ModernFix, ImmediatelyFast, Entity Culling and Dynamic FPS, plus Iris with the MakeUp UltraFast shader, which is on from the first launch (it's a very light shader; switch it off under Options > Video Settings > Shader Packs if your PC struggles).
-- **Optional, for stronger PCs:** **Complementary Reimagined**, a richer shader with soft shadows and clouds. Tick it when you install, then pick it under Options > Video Settings > Shader Packs; MakeUp UltraFast stays the light default.
+**Building**
+- [Cozy Core](https://github.com/gabmaybelle/cozy-core): creepers can't break your builds, endermen leave blocks alone, fire never burns a block, no phantoms, and you keep your hotbar when you die. Its Hearth Lantern keeps monsters from spawning near your build site. Wood goes in the stonecutter at cheap rates, and you can re-dye blocks.
+- Beautify and Rechiseled for more to build with, and Continuity for connected glass.
+- FallingTree: crouch while chopping a trunk to fell the whole tree. A normal swing takes one log, so log builds are safe.
 
-## Playing it
+**Starting out**
+- [Spawn Gazebo](https://github.com/gabmaybelle/spawn-gazebo): you start in a little gazebo with a starter chest.
+- Universal Graves: when you die, everything you didn't keep waits in a grave where you fell.
 
-Grab the `.mrpack` and import it into the Modrinth app (or Prism Launcher, ATLauncher or CurseForge). Coming from 0.3.0? Make a fresh instance: its worlds don't carry over, and if you update in place, delete `espresso-flavoured-core-0.3.0.jar` from `mods` yourself, since Cozy Core takes its place. You'll need Minecraft 26.3; the launcher sorts out Fabric for you. A few parts are still in beta for 26.3 (JEI, Visuality and Fresh Animations), as many mods are this early in a version.
+**The world**
+- Terralith and Towns and Towers, for more varied land and villages.
+- Nature's Compass, Explorer's Compass, and Xaero's World Map and Minimap, for finding your way.
 
-**Give it 4 GB of memory.** Launchers often start at 2 GB, which is just enough to get going but leaves little room: once you're exploring, the game keeps about 1 to 1.8 GB in use, so at 2 GB it's nearly full and stutters more as your world grows. In the Modrinth app it's under the instance's settings, then Java and memory. 3 GB is the least we'd use; a PC with 8 GB of RAM or more is comfortable.
+**Handy extras**
+- [Nightfall Clock](https://github.com/gabmaybelle/nightfall-clock): the day and time above your hotbar.
+- [Pocket List](https://github.com/gabmaybelle/pocket-list): press K for a checklist of what you're gathering.
+- JEI for recipes, Jade for what you're looking at, Zoomify (hold C), inventory sorting, durability on hover, and Mod Menu.
 
-**What to expect:** on a budget gaming laptop (Core i5-13420H, RTX 3050 laptop GPU, 16 GB) at 1080p with the MakeUp shader and the default render distance of 12, it runs at about 50 to 90 FPS while exploring new land, and a little lower just after a new world opens while the land around spawn is still being built. Most of the work there is generating Terralith's land, so your processor matters more than your graphics card; pre-generating with Chunky smooths it out. On integrated graphics, turn the shader off or the render distance down.
+**Looks and speed**
+- A light shader (MakeUp UltraFast) is on from the start. On a stronger PC you can pick Complementary Reimagined instead, under Options > Video Settings > Shader Packs. On integrated graphics, switch shaders off.
+- Falling leaves, rain particles, ambient sounds and nicer grass. Fresh Animations is an optional extra you can tick when you install.
+- Sodium, Lithium and other performance mods keep it running smoothly.
+
+Your own settings are never reset by an update: the pack's starting settings only apply the first time.
 
 ## Running a server
 
-Every player needs the pack, and the server needs the server-side mods. The easy way: most server hosts can install a `.mrpack` for you (look for a Modrinth or "import modpack" option). They read the pack's list and skip the mods that only belong on players' computers.
+Most server hosts can install a `.mrpack` for you; look for a Modrinth or "import modpack" option. To set up a server folder yourself, run `node install-server.js <folder>` from this repository (it needs [Node.js](https://nodejs.org/)).
 
-If you'd rather set up a server folder yourself, `node install-server.js <folder>` from this repository does the same, with exactly the mods a server needs (add `--with-optional` for the optional performance ones). It needs [Node.js](https://nodejs.org/). Run it again after a pack update and it swaps in the new versions, moving anything the pack no longer has into `old-pack-files/` (nothing is deleted, and mods you added yourself are left alone).
+- Keep the server and every player on the same pack version.
+- Cozy Core's rules are game rules saved with the world: set them with `/gamerule cozy_core:...`.
+- Pre-generate the world with Chunky before inviting people, since new land is slow to generate. New 26.3 servers have the whitelist on.
 
-A few things to know:
+## Upgrading from 0.3.0
 
-- **The rules live in the world.** Cozy Core's rules and the Hearth Lantern's reach are game rules, saved with the world, so set them on the server with `/gamerule cozy_core:...` and everyone plays by the same ones. Spawn Gazebo's settings come from the server's `config/spawn_gazebo.properties`.
-- **Keep everyone on the same version.** Update the server and every player to the same pack version together, so their mods match. Like a player's game, the server keeps its own settings through updates: the pack's defaults only fill in files it doesn't have yet.
-- **Before you invite anyone:** new 26.3 servers have the whitelist turned on, and Terralith makes new chunks slow to generate, so pre-generating your world helps a lot (Chunky is in the pack for that).
+Start a fresh instance: 0.3.0 worlds don't carry over. If you update in place, delete `espresso-flavoured-core-0.3.0.jar` from your `mods` folder, since Cozy Core takes its place.
 
 ## Building it yourself
 
-`node build-pack.js` reads `pack.json`, takes every mod (and what each one needs) from Modrinth at the exact version pinned in `pack.lock.json`, and writes the `.mrpack` to `dist/`, so the same pack version always builds the same pack. `node build-pack.js --outdated` lists mods with a newer 26.3 build, and `--update` takes them, rewrites the lock and lists what changed. `install-test.js` installs it into a test folder, and `scan-mixins.js` lists any mods that change the same parts of the game as our own mods.
+`node build-pack.js` builds the `.mrpack` into `dist/` from the exact versions pinned in `pack.lock.json`. `--outdated` lists newer mod builds and `--update` takes them. `install-test.js` installs the pack into a test folder, and `scan-mixins.js` lists mods that change the same parts of the game as ours.
 
 ## Credits and licences
 
