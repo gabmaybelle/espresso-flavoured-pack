@@ -290,28 +290,28 @@
 			"size": 752447
 		},
 		"spawn-gazebo": {
-			"tag": "v1.1.1",
-			"asset": "spawn-gazebo-1.1.1.jar",
-			"url": "https://github.com/gabmaybelle/spawn-gazebo/releases/download/v1.1.1/spawn-gazebo-1.1.1.jar",
-			"sha1": "cca744a096426c999142b94264e54a99d66d395a",
-			"sha512": "50b9bfedc35e1ca1f21c901d3c05f88fd25b38ac916045621af22f517a5cd7490c75e307a414d305940a375ba8f5e09c05ae0928189610ea7a21a0046dac33bd",
-			"size": 349481
+			"tag": "v1.2.0",
+			"asset": "spawn-gazebo-fabric-1.2.0.jar",
+			"url": "https://github.com/gabmaybelle/spawn-gazebo/releases/download/v1.2.0/spawn-gazebo-fabric-1.2.0.jar",
+			"sha1": "2b5353fb75d20544cec0cae815809a4796444a93",
+			"sha512": "00dd35cf1c69b7e22b4b102267523ff6363f8bff2165e27c58c0d505d6d7c919498541d37dfc3623878a4b061f33acc2bb3ec54121d54ce65b4b1944fa2fceaf",
+			"size": 353972
 		},
 		"pocket-list": {
-			"tag": "v0.1.0",
-			"asset": "pocket-list-0.1.0.jar",
-			"url": "https://github.com/gabmaybelle/pocket-list/releases/download/v0.1.0/pocket-list-0.1.0.jar",
-			"sha1": "c9c901f74a6e83230c92f2722303c6e635d8993c",
-			"sha512": "d7303ac53c83086d0c4ec5f73f1059eaba96614371605b4f0e093cf0172ff5bfbc52836fb24fe6363c882c30f9ac1334b3c6a6a7e3e501a14f9127315fe76a62",
-			"size": 88916
+			"tag": "v0.2.0",
+			"asset": "pocket-list-fabric-0.2.0.jar",
+			"url": "https://github.com/gabmaybelle/pocket-list/releases/download/v0.2.0/pocket-list-fabric-0.2.0.jar",
+			"sha1": "182ae07f438c79bae1d77bb476c3b3f318581e40",
+			"sha512": "d298c7178655c320aa635616e86790607b36f2932121ce6b8f82638f30843cf6335c378a91a1bf0282bc2a8b254eb8b984884e182954327dc19cff33398dce7c",
+			"size": 93095
 		},
 		"nightfall-clock": {
-			"tag": "v0.2.1",
-			"asset": "nightfallclock-0.2.1.jar",
-			"url": "https://github.com/gabmaybelle/nightfall-clock/releases/download/v0.2.1/nightfallclock-0.2.1.jar",
-			"sha1": "556792fa739339c252b357e13265f2720d2cadb7",
-			"sha512": "aa42899634c8c7cff0e0d44af911e823481d6055469540158a70816a4af99febcf27829184f7cf657cd42fb31d266de8f2e85090b7fb6bbe219d51f5a636a2e2",
-			"size": 26027
+			"tag": "v0.3.1",
+			"asset": "nightfallclock-fabric-0.3.1.jar",
+			"url": "https://github.com/gabmaybelle/nightfall-clock/releases/download/v0.3.1/nightfallclock-fabric-0.3.1.jar",
+			"sha1": "e1167caf469f74737248fcc955f99dcb5607b74d",
+			"sha512": "72b19effd9e2ebc89056449f7314d08eaaf4ad322e5adebaa1af7a17eced9cb19e5c43a70f94f725a02333ab8e9fa8f82e9a631d967054b23210c13ee1833f9a",
+			"size": 26923
 		}
 	}
 }

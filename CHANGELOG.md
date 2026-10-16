@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.5.2
+
+Our own mods move to their newest versions. Nothing else in the pack changes.
+
+- **Pocket List 0.2.0:** a new release with the same checklist, now also made for NeoForge.
+- **Nightfall Clock 0.3.1:** the clock reads the sun the way the sky does.
+- **Spawn Gazebo 1.2.0:** now also made for NeoForge; on Fabric it works as before, and worlds you already have keep their gazebo. Espresso Flavoured Core 0.4.0 still works with it.
+- Updating an install with the pack's own scripts moves the older copies of these mods out of `mods/` (into `old-pack-files/`), so two copies never load together.
+
 ## 0.5.1
 
 - **Our own five mods are now downloaded from their GitHub releases**, each pinned by version and file hash, instead of being packed inside the pack file. The pack file is about 10 KB instead of 1.4 MB, and every launcher that imports `.mrpack` files, Modrinth included, can take it. The mods themselves are the same as in 0.5.0, except that Pocket List carries its new pinned-checklist icon.
