@@ -1,6 +1,6 @@
 # Espresso Flavoured
 
-*A shot of espresso for your survival world: less stress, less grind, more building.*
+*Build, decorate and run a café in a world that keeps your work safe.*
 
 A cozy, builder-friendly survival modpack for Minecraft 26.3 on Fabric. Your builds stay safe, decorating is easier, there's a café to run, and the world looks lovely from the first launch. It's made to run well on an ordinary PC.
 
