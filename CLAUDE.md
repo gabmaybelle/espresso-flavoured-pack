@@ -35,7 +35,7 @@ it first, and add this session's row before ending.
 - **Our own mods come from GitHub releases.** To update one: release it from a clean, committed
   `main` of its repo, change its `tag` and `asset` in `pack.json`'s `ownMods`, run
   `node build-pack.js` (it downloads and hashes the jar) and commit the lock. Current: cozy-core
-  v0.3.0, espresso-flavoured-core v0.4.0, spawn-gazebo v1.2.0, pocket-list v0.2.0,
+  v0.3.0, espresso-flavoured-core v0.5.0, spawn-gazebo v1.2.0, pocket-list v0.2.0,
   nightfall-clock v0.3.1 (their Fabric jars, `<mod>-fabric-<version>.jar`; the old names are on the `retired` list). Deleting or renaming a release breaks the build, and CI checks every link.
 - The default shader is switched on by file name in `overrides/config/yosbr/config/iris.properties`;
   `build-pack.js` stops if an update renames it.

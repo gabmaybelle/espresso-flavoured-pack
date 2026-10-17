@@ -282,12 +282,12 @@
 			"size": 879587
 		},
 		"espresso-flavoured-core": {
-			"tag": "v0.4.0",
-			"asset": "espresso-flavoured-core-0.4.0.jar",
-			"url": "https://github.com/gabmaybelle/espresso-flavoured/releases/download/v0.4.0/espresso-flavoured-core-0.4.0.jar",
-			"sha1": "357ed6a76fa9848d2b0577644cdfb26f2a693ef3",
-			"sha512": "81def1c1898aa23a46ce7529fcb2abc1f70ed7a7f1e0df4373a0916e2b08ba599a6d6e39c35d4f26d0488539b0577f99b092ad985c37a6cc4db4f160b7b97ff4",
-			"size": 752447
+			"tag": "v0.5.0",
+			"asset": "espresso-flavoured-core-fabric-0.5.0.jar",
+			"url": "https://github.com/gabmaybelle/espresso-flavoured/releases/download/v0.5.0/espresso-flavoured-core-fabric-0.5.0.jar",
+			"sha1": "43945f22c8b6c7e52a5b0e7eec9448d4faa3d07a",
+			"sha512": "8ac3c42de4deaec01e0bab1133c5747ec1036937712105c1f6543543c8f60758d9b1da825af5ec67ea1b07303a99832feeb1bbb2b4a390def081d0f23061e045",
+			"size": 783250
 		},
 		"spawn-gazebo": {
 			"tag": "v1.2.0",

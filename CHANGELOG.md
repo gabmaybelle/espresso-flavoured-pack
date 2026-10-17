@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.5.3
+
+- **Espresso Flavoured Core 0.5.0:** the same café, now also made for NeoForge (this pack keeps using its Fabric jar). It carries Spawn Gazebo 1.2.0 inside it, the same version as the pack's own, so the two match again. Your worlds carry over as they are.
+- Updating an install with the pack's own scripts moves the old `espresso-flavoured-core-0.4.0.jar` out of `mods/` (into `old-pack-files/`), so two copies never load together.
+
 ## 0.5.2
 
 Our own mods move to their newest versions. Nothing else in the pack changes.
