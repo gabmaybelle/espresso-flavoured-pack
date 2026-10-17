@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.5.4
+
+Our own mods move to their newest versions. Nothing else in the pack changes.
+
+- **Espresso Flavoured Core 0.5.1:** the same café, with Spawn Gazebo 1.3.0 inside.
+- **Spawn Gazebo 1.3.0:** an operator can give a world you already have its gazebo with `/spawngazebo build` (then `/spawngazebo build confirm`).
+- **Pocket List 0.3.0:** Paste List makes a list from text you've copied, Copy List copies yours to share, and From Litematica turns a schematic's material list into a list.
+- Updating an install with the pack's own scripts moves the older copies of these mods out of `mods/` (into `old-pack-files/`), so two copies never load together.
+
 ## 0.5.3
 
 - **Espresso Flavoured Core 0.5.0:** the same café, now also made for NeoForge (this pack keeps using its Fabric jar). It carries Spawn Gazebo 1.2.0 inside it, the same version as the pack's own, so the two match again. Your worlds carry over as they are.
